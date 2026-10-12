@@ -13,7 +13,7 @@ def load_wolves() -> pd.DataFrame:
     return df.set_index("year")
 
 
-def load_gir_lions(since: int = 1968) -> pd.DataFrame:
-    """Gir lion census counts; defaults to the consistent Forest Dept series from 1968."""
-    df = pd.read_csv(RAW / "gir_lion_census.csv")
-    return df[df["Year"] >= since].set_index("Year")
+def load_gir_lions(analysis_only: bool = True) -> pd.DataFrame:
+    """Cleaned Gir lion census; by default only the consistent 1968+ series."""
+    df = pd.read_csv(ROOT / "data" / "processed" / "gir_lions_clean.csv", index_col="year")
+    return df[df["use_in_analysis"]] if analysis_only else df
