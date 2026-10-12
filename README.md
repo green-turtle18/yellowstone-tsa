@@ -37,10 +37,10 @@ datasets we can actually obtain (see `DATA_TODO.md`).
 - 3.3 Smoothing and trend estimation: moving average, LOESS, polynomial
 
 ### 4. Wolf Population Dynamics
-- 4.1 Growth-curve modelling: exponential vs logistic; carrying-capacity estimate `[MIDSEM]`
+- 4.1 Growth-curve modelling: exponential vs logistic; carrying-capacity estimate + trend model comparison `[MIDSEM]`
 - 4.2 Stationarity analysis: ADF, differencing, regime split `[MIDSEM]`
 - 4.3 Model identification: ACF and PACF `[MIDSEM]`
-- 4.4a ARMA on the stable phase (2009+) `[MIDSEM]`
+- 4.4a Model selection: candidate ARMA models for the stable phase `[MIDSEM]`
 - 4.4b ARIMA on the full series `[POST]`
 - 4.5 Diagnostic checking: residual ACF, Ljung–Box, QQ plots `[MIDSEM]`
 - 4.6 Structural breaks and interventions: distemper years (2005, 2008), 2021 hunting spike `[POST]`
