@@ -1,0 +1,7 @@
+model,coefficients,all terms significant,residual variance,LjungBox_p(lag8),white-noise residuals
+white noise,—,True,0.0209,0.3846,True
+"ARMA(1,0)",ar.L1=0.036 (p=0.84),False,0.0209,0.3763,True
+"ARMA(2,0)","ar.L1=0.050 (p=0.79), ar.L2=-0.272 (p=0.21)",False,0.0193,0.5075,True
+"ARMA(0,1)",ma.L1=0.079 (p=0.65),False,0.0208,0.3653,True
+"ARMA(0,2)","ma.L1=0.261 (p=0.18), ma.L2=-0.542 (p=0.00)",False,0.0176,0.6083,True
+"ARMA(1,1)","ar.L1=-0.637 (p=0.00), ma.L1=0.973 (p=0.00)",True,0.0174,0.6541,True
