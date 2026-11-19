@@ -1,0 +1,6 @@
+{
+  "unchanged_data_and_model_output_files": 45,
+  "preserved": true,
+  "q6_rows": 9,
+  "note": "Historical pending table retained; current notebook and rebuild use q6_removals_comparison.csv"
+}

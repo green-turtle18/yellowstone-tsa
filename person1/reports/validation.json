@@ -1,0 +1,34 @@
+{
+  "notebooks": [
+    {
+      "notebook": "notebooks/01_eda_stationarity_arma.ipynb",
+      "executed_code_cells": 11,
+      "errors": 0
+    },
+    {
+      "notebook": "notebooks/02_arimax_granger_forecast.ipynb",
+      "executed_code_cells": 16,
+      "errors": 0
+    },
+    {
+      "notebook": "notebooks/03_elk_drivers.ipynb",
+      "executed_code_cells": 13,
+      "errors": 0
+    },
+    {
+      "notebook": "notebooks/04_breaks_state_space.ipynb",
+      "executed_code_cells": 10,
+      "errors": 0
+    },
+    {
+      "notebook": "notebooks/05_elk_viability.ipynb",
+      "executed_code_cells": 6,
+      "errors": 0
+    }
+  ],
+  "unit_tests": 10,
+  "status": "passed",
+  "command": "python scripts/run_all.py",
+  "checked_at": "2026-11-19T19:31:24.992791+00:00",
+  "scope": "Notebook execution checked here; run_all invokes this only after its tests pass."
+}

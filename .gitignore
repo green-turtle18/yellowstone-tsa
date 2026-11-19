@@ -1,0 +1,32 @@
+# Local Python environments
+.venv/
+venv/
+env/
+
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.mplconfig/
+
+# Local coverage output
+.coverage
+.coverage.*
+htmlcov/
+
+# macOS metadata and temporary editor/Office files
+.DS_Store
+._*
+~$*
+*.swp
+*.swo
+*.zip.tmp
+
+# Local credentials (keep example configuration templates)
+.env
+.env.*
+!.env.example
+!.env.sample

@@ -1,0 +1,11 @@
+metric,Yellowstone,Isle_Royale,specification
+wolf_only_beta_per_10,-0.0305289891197984,,delta log prey ~ constant + lagged delta wolves / 10
+wolf_only_CI_low,-0.0690146264858656,,ARIMA Gaussian 95% Wald CI
+wolf_only_CI_high,0.0079566482462687,,ARIMA Gaussian 95% Wald CI
+wolf_only_n,40.0,,full flagged sample; report real-only sensitivity
+Granger_wolf_to_prey_p,0.1759541061548639,,VAR(1) contemporary delta log prey and delta wolves/10
+Granger_prey_to_wolf_p,0.797050066030073,,"same VAR(1), reverse F-test"
+MAE_gain_over_drift_percent,1.7337228236186664,,"100*(1-wolf_MAE/drift_MAE), common real target/origin years"
+GBM_log_drift,-0.015668997644293,,mean adjacent verified annual log changes
+GBM_volatility,0.1790310638527973,,"sample SD, ddof=1"
+GBM_transition_n,27.0,,exclude any pair with imputed or unresolved-coverage count
