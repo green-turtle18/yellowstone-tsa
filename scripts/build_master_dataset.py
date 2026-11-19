@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
 
-raw_path = 'data/raw/'
-processed_path = 'data/processed/'
+from pathlib import Path
+import runpy
+ROOT = Path(__file__).resolve().parents[1]
+raw_path = str(ROOT / 'data/raw') + '/'
+processed_path = str(ROOT / 'data/processed') + '/'
 
 # 1. Timeline baseline (1984 - 2025)
 df_master = pd.DataFrame({'Year': range(1984, 2026)})
@@ -39,3 +42,5 @@ for col in ['Elk_Count', 'Wolf_Count', 'Bison_Count', 'NDVI', 'Precip_Annual', '
 output_file = processed_path + 'yellowstone_master_ts_final.csv'
 df_master.to_csv(output_file, index=False)
 print(f"Dataset successfully created and cleaned at {output_file}")
+# The canonical entry point also builds provenance and applies verified overrides.
+runpy.run_path(str(ROOT / "scripts/build_master_flagged.py"), run_name="__main__")

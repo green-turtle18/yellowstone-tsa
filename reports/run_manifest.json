@@ -1,0 +1,9 @@
+{
+  "python": "3.12.0",
+  "numpy": "2.5.0",
+  "pandas": "3.0.3",
+  "statsmodels": "0.15.0",
+  "seed": 20261119,
+  "data_sha256": "cf2a33b2b0755eb65cb8c615b67084ad7fb448e56b78982feaabe5870b3b9330",
+  "status": "provisional; see HANDOFF.md"
+}
