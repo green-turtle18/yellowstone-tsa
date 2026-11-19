@@ -1,0 +1,6 @@
+,years scored,MAE,MAPE %,MAE gain over drift %,MAPE gain over drift %
+naive,26.0,182.15,19.78,-7.62,-2.41
+drift,26.0,169.26,19.31,0.0,0.0
+ARIMAX wolves,26.0,154.43,18.12,8.76,6.18
+ARIMAX wolves + density,26.0,161.08,19.65,4.83,-1.76
+VAR(1),26.0,175.75,19.69,-3.83,-1.92

@@ -1,0 +1,10 @@
+,0
+n,57
+EG wolves~prey p,0.916171143705049
+EG prey~wolves p,0.4154864091834984
+Johansen trace stats,"[10.59, 0.79]"
+trace 5% crit,"[15.49, 3.84]"
+Johansen max-eig stats,"[9.8, 0.79]"
+max-eig 5% crit,"[14.26, 3.84]"
+rank (trace),0
+rank (max-eig),0

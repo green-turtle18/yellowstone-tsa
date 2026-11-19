@@ -1,0 +1,5 @@
+run,P(wolves ≤ 2 by 2016),P(wolves ≤ 2 by 2015),P(wolves = 0 by 2016),median first year ≤ 2 (runs that hit),P(wolves ≤ 2 in 2016 itself),percentile of observed 2016 count (2)
+"prey-dependent, environmental + demographic",0.516,0.494,0.363,2005.0,0.423,42.29
+"prey-dependent, environmental only",0.031,0.027,0.0,2012.0,0.027,2.72
+"ratio-dependent, environmental + demographic",0.336,0.325,0.21,2004.0,0.246,24.65
+"ratio-dependent, environmental only",0.0,0.0,0.0,2009.0,0.0,0.0

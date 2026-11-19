@@ -1,0 +1,4 @@
+model,AIC,RMSE log moose,RMSE log wolves,long-run behaviour,cycle period (yr),r,a,e,d,kill/wolf/yr at M=1000,K,h,max kill/wolf/yr (1/h)
+Lotka–Volterra,-246.9495,0.2644,0.3693,neutral cycles (amplitude set by start),23.375,0.2833,0.013,0.0205,0.2622,13.0238,,,
+Rosenzweig–MacArthur,-270.4304,0.2623,0.3055,stable limit cycle,29.5556,0.6031,0.1542,0.1542,2.1738,14.1868,2240.3843,0.064,15.6245
+"Rosenzweig–MacArthur, d fixed",-257.8724,0.2639,0.3385,settles to equilibrium,,0.3218,0.0173,0.0176,0.2622,14.9234,76329952218.3247,0.0092,108.9142

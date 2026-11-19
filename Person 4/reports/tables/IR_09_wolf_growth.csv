@@ -1,0 +1,5 @@
+model,term,beta,p,pct_per_unit,pct_CI_low,pct_CI_high,n,AIC,BIC
+food (log M),log_moose_lag,0.147,0.304,14.663,-13.302,42.627,56,25.105,31.181
+food + own density,log_moose_lag,0.14,0.348,13.955,-15.179,43.089,56,27.039,35.14
+food + own density,log_wolves_lag,-0.026,0.758,-2.607,-19.184,13.971,56,27.039,35.14
+moose per wolf (ratio),moose_per_wolf_lag,0.082,0.21,8.238,-4.64,21.116,56,25.529,31.605
