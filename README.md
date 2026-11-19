@@ -1,79 +1,124 @@
-# Yellowstone elk and wolves: time-series analysis, 1984–2025
+# Yellowstone Trophic Cascade: A Time-Series Analysis (1984–2025)
 
-This project asks whether wolves, hunting, winter severity, bison and climate carry predictive information about northern Yellowstone elk growth. Annual observational models cannot establish a causal trophic cascade.
+## 📌 Project Overview
+This project uses time-series methods to revisit one of the best-known debates in modern ecology: **the Yellowstone trophic cascade.**
 
-**Current status:** Person 1 questions Q1–Q7 and observation-error extension R are implemented and executed. Data corrections Q0 are partly complete. Final conclusions remain provisional pending the specific external inputs below.
+The classic narrative holds that reintroducing gray wolves to Yellowstone National Park in 1995 triggered a "top-down" cascade: wolves reduced the large Northern Yellowstone elk herd, which eased browsing pressure and let willows and aspens recover.
 
-- [Results and before/after comparison](reports/RESULTS.md)
-- [Completion checklist, ready-to-send requests and handoffs](reports/HANDOFF.md)
-- [Audited value/source changes](reports/tables/data_corrections.csv)
-- [Yellowstone–Isle Royale comparison, awaiting Person 4](reports/tables/person4_comparison.csv)
-- [References and source decisions](reports/REFERENCES.md)
+Many ecologists argue this is an oversimplification. They point to "bottom-up" and competing factors — drought, harsh winters, human hunting outside the park, and forage competition from a fast-growing bison herd — as major drivers of the elk decline.
 
-## Reproduce
+Using the **Box–Jenkins methodology with exogenous regressors (ARIMAX)** on 42 years of annual data (1984–2025), we test **which factors carry predictive information for northern Yellowstone elk counts** — predator pressure (wolves), climate (precipitation, drought), vegetation (NDVI) or competition (bison) — and whether the evidence is *consistent with* a wolf-driven cascade.
 
-From the repository root, with Python and `requirements.txt` dependencies installed:
+> **Scope note.** Time-series models can show whether a variable helps *predict* elk counts beyond what the elk's own history already explains (Granger causality, ARIMAX). They cannot by themselves prove *causation*. With 42 annual observations, results are indicative, and we report them with that caveat.
 
-```sh
-python3 scripts/run_all.py
+---
+
+## ❓ Research Questions
+1. Is there a structural change in northern Yellowstone elk counts around the 1995 wolf reintroduction?
+2. Do wolf numbers carry predictive information for elk counts beyond the elk's own past and climate?
+3. How do wolves compare with bison, drought and precipitation as predictors of elk counts?
+4. Does summer vegetation greenness (NDVI) change in a way consistent with reduced elk browsing?
+
+---
+
+## 📊 Datasets & Sources
+All series are annual and restricted to the **Northern Range** of Yellowstone (except where noted) for spatial consistency.
+
+| Variable | Role | Span | Source |
+|---|---|---|---|
+| **Elk count** | Target ($Y_t$) | 1984–2025 | Northern Yellowstone Cooperative Wildlife Working Group winter counts, as compiled in MacNulty et al. (2016) (1984–2015); Montana FWP Hunting District 313 counts (2016–2025) |
+| **Wolves (northern range)** | Exogenous ($X_1$) | 1995–2025 | NPS Yellowstone Wolf Project annual reports. Zero before 1995 (pre-reintroduction). Park-wide totals kept as an alternative series. |
+| **Summer NDVI** | Exogenous ($X_2$) | 1984–2025 | Climate Engine (Landsat), June–August mean |
+| **Annual precipitation** | Exogenous ($X_3$) | 1984–2025 | TerraClimate via Climate Engine, water year (Oct–Sep) |
+| **Palmer Drought Severity Index** | Exogenous ($X_4$) | 1984–2025 | TerraClimate via Climate Engine, water year (Oct–Sep) |
+| **Bison (northern herd)** | Exogenous ($X_5$) | 1984–2025 | NPS *Yellowstone Bison Population Status Report* (Oct 2023) for 1984–2022; recent news and conservation estimates for 2024–2025 |
+
+### Data quality and imputation
+Every value in the processed dataset carries a `*_source` column recording how it was obtained (`count`, `count_hd313`, `interpolated`, `backfilled`, `carried_forward`, `estimate`, `structural_zero`) and a 0/1 `*_imputed` flag. Built by `scripts/build_master_dataset.py`.
+
+| Variable | Real values | Filled values |
+|---|---|---|
+| Elk | 32 | 10 (6 interpolated, 2 backfilled, 2 carried forward) |
+| Wolves (northern range) | 25 + 11 structural zeros | 6 interpolated (1996–2000, 2014) |
+| Bison | 40 | 2 (2023 carried forward, 2025 estimate) |
+| NDVI | 42 | 0 |
+| Precipitation, PDSI | 41 | 1 each (2025 carried forward, pending re-download) |
+
+**Known issues to resolve before modelling**
+- [ ] **Elk splice at 2016.** Confirm whether MT FWP Hunting District 313 counts cover the whole northern herd (inside and outside the park) like the 1984–2015 working-group counts. If not, replace 2016–2025 with whole-herd counts.
+- [ ] **Elk 1998 = 1999 (11,748).** Verify against MacNulty et al. (2016).
+- [ ] **Bison 2023.** Verify against the NPS bison report.
+- [ ] **Precipitation and PDSI 2025.** Re-download water year 2025 from TerraClimate.
+- [ ] **NDVI sensor changes.** A 1984–2025 Landsat series spans Landsat 5, 7 and 8; check for artificial jumps at sensor transitions.
+
+Imputed values are excluded when scoring forecast accuracy, and key models are re-fit without them as a robustness check.
+
+---
+
+## 🗂️ Repository Structure
+
+```text
+├── data/
+│   ├── raw/                  # Original, unmodified source files (CSVs, PDFs). Never edited by hand.
+│   └── processed/            # Built datasets, e.g. yellowstone_master_ts_flagged.csv
+├── notebooks/                # Jupyter notebooks: EDA, stationarity, Granger causality, ARIMAX
+├── reports/
+│   └── figures/              # Generated plots (ACF/PACF, residual diagnostics, forecasts)
+├── scripts/                  # Data-building scripts (build_master_dataset.py)
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
-This rebuilds the canonical flagged dataset, runs all analyses, generates the results summary, creates notebooks 03–05, executes notebooks 01–05, and runs numerical checks. Failures stop the run. It uses a lightweight plain-Python notebook runner, so no Jupyter server is required. The runner captures printed output, final expressions and open Matplotlib figures; these notebooks do not use magics or shell cells. Jupyter can also open and execute them normally.
+---
 
-To run stages individually:
+## ⚙️ Methodology & Project Phases
 
-```sh
-python3 scripts/build_master_dataset.py
-python3 scripts/analysis.py
-python3 scripts/summarize_results.py
-python3 scripts/run_notebooks.py
-python3 -m unittest discover -s tests -v
-```
+### Phase 0: Data Preparation
+- [x] Assemble master annual dataset (1984–2025).
+- [x] Add `*_source` and `*_imputed` columns for every variable.
+- [ ] Resolve the known issues listed above.
 
-`reports/run_manifest.json` records runtime versions, random seed and dataset hash. Original data and notebook outputs before this revision are in `reports/baseline/`.
+### Phase 1: Exploratory Data Analysis & Stationarity
+- [x] Initial ADF tests and log-differencing of elk counts ($d=1$) on the v1 dataset.
+- [ ] Re-run on the flagged dataset: plots of all series with imputed points marked.
+- [ ] ADF (and KPSS as a cross-check) on each series in levels and first differences.
+- [ ] ACF and PACF of the differenced elk series to identify candidate AR and MA orders.
+- [ ] Structural-break check at 1995 (Chow test or intervention dummy).
 
-## Data and corrections
+### Phase 2: Preliminary Regression & Granger Causality
+- [x] Baseline trend regressions (linear, polynomial, splines) on the v1 dataset.
+- [x] Pairwise Granger causality on the v1 dataset (bison flagged as a possible 1-year leading indicator).
+- [ ] Re-run Granger tests on **stationary (differenced)** series of the flagged dataset.
+- [ ] Test both directions (e.g. bison → elk and elk → bison).
+- [ ] Report lag choice and p-values for every pair, not only significant ones.
 
-Raw CSVs are preserved. `scripts/build_master_dataset.py` builds the legacy intermediate, then calls `scripts/build_master_flagged.py`, which applies `data/corrections/verified_overrides.csv` and writes the **canonical** `data/processed/yellowstone_master_ts_flagged.csv`. The unflagged `yellowstone_master_ts_final.csv` is a legacy intermediate; use the flagged file for analysis.
+### Phase 3: ARIMAX Modelling
+- [ ] Fit a baseline ARIMA on elk counts (no exogenous variables).
+- [ ] Build candidate ARIMAX models adding exogenous variables one at a time and in combination (wolves, bison, NDVI, precipitation, PDSI), with lags of 0–1 years.
+- [ ] **Standardise** exogenous variables (z-scores) so coefficients are comparable.
+- [ ] Rank candidates by AIC and BIC; prefer the simpler model when scores are close.
+- [ ] Report coefficients with standard errors and confidence intervals.
 
-Every core variable has source and imputation flags. `count_whole_herd` identifies audited whole-herd elk observations; `Elk_Count_coverage_unresolved` separately identifies unresolved survey geography. An observation can be non-imputed yet unsuitable for a whole-herd analysis. Date/method differences also remain among whole-herd observations.
+### Phase 4: Diagnostic Checking & Evaluation
+- [ ] Residual plot, residual ACF and QQ plot for each final model.
+- [ ] Ljung–Box test on residuals (up to lag 10, given n = 42).
+- [ ] **Rolling-origin evaluation:** refit each year from 2010 and forecast one year ahead; score with MAE and RMSE on real (non-imputed) counts only.
+- [ ] Compare ARIMAX against the baseline ARIMA and a naive forecast (next year = this year).
+- [ ] Robustness check: re-fit key models excluding imputed years.
 
-| Input | Timing used | Known limitation |
-| --- | --- | --- |
-| Elk | Winter year t | Surveys vary from December of t−1 to April of t; changing detection and methods |
-| Northern-range wolves | December t−1; change per 10 wolves | Early gaps; range of wolf packs differs from whole-herd elk geography |
-| Northern bison | Summer t−1; log difference | Repeated summer surveys differ; 2023 last-survey vs narrative-average sensitivity |
-| NDVI | Summer t−1 | Polygon, sensor and harmonisation metadata needed |
-| Precipitation / PDSI | **Calendar year** t−1 | Headers say TerraClimate Jan–Dec; earlier README/brief descriptions were inconsistent |
-| Harvest | Season ending t, divided by elk t−1 | Publication/season timing and hunting-area changes need confirmation |
-| Winter severity | Winter ending t | Nov–Apr / water-year components may extend beyond the elk count |
+### Phase 5: Exploratory Extension (optional)
+- [ ] Shallow decision tree (max depth 2–3) on standardised exogenous variables, presented as exploratory only — n = 42 is too small for firm thresholds.
 
-Verified corrections include historical whole-herd counts tabulated in the 2019 survey report, 2016–2019 and 2022–2025 elk, 2014 northern wolves and 2023 northern bison. Exact sources and alternatives are in the correction log. 2020–2021 whole-herd counts, the 2024 cross-report discrepancy, historical count provenance and 2025 climate are not silently resolved. Prior-year alignment means the missing 2025 climate endpoint is not used to explain the 2025 elk target.
+### Phase 6: Interpretation
+- [ ] Answer each research question, stating what the evidence supports and what it cannot establish.
+- [ ] Compare findings with the published debate (e.g. Ripple & Beschta; MacNulty et al.; Hobbs et al.).
 
-## Analyses
+---
 
-| Notebook | Contents |
-| --- | --- |
-| 01 | Flagged-series EDA, ADF/KPSS, ACF/PACF, 1995 intervention description, ARMA diagnostics |
-| 02 | Updated legacy six-driver regression, both-direction Granger, robustness, shared conditional prediction pipeline, VAR |
-| 03 | Q1–Q4 and Q6: seven-driver models including severity, multiple-testing adjustment, predefined forecasts, winter interaction, hunting comparison |
-| 04 | Q5 and R: mean/trend break search, CUSUM, growth-state Kalman model and density-dependent measurement-error model |
-| 05 | Q7: GBM first passage, bootstrap intervals, 10,000-path checks, Gompertz comparison and bootstrap LR |
-
-All numerical tables are in `reports/tables/`; figures are in `reports/figures/`, including new figures numbered 11–17. Shared functions live in `scripts/analysis.py`. New notebooks end with a plain-English explanation and the current results report.
-
-## Interpretation safeguards
-
-- No full-sample feature selection for rolling predictions. Transformation choices, scaling and station baselines are learned within each training window.
-- No future interpolation of training outcomes. Only adjacent observed elk transitions enter training; exogenous gaps use past-only carries. Forecast models are compared on identical eligible years.
-- Full-model evaluation is **conditional retrospective prediction**, not a validated operational forecast. Predictor publication dates and exposure windows are not fully established.
-- ADF/KPSS results and all tested coefficients are reported, not only significant outcomes. Seven single-driver screens use Bonferroni ×7.
-- Real-only, verified-coverage, pre-2016, wolf-level, MA(2) and alternative-survey checks are exported. Calendar gaps are never compressed for dynamic-error models.
-- The state-space implementation puts covariates in latent growth, as specified by the brief's equation. Missing outcomes remain NaN on an annual grid. Its uncertainty band conditions on fitted parameters.
-- Break selection includes zero breaks. The exact L2 dynamic-programming search is not a formal Bai–Perron significance test.
-- GBM continuous first passage is checked with Brownian bridges; annual-only crossings are reported separately. Gompertz simulations use annual monitoring. LR inference uses a parametric bootstrap under a random walk.
-- Threshold outputs are survey-count scenarios, not true abundance or extinction estimates. No ecological mechanism follows from coefficient signs alone.
-
-## Inputs needed from collaborators
-
-The detailed [handoff](reports/HANDOFF.md) specifies owners, exact files to send, return schemas and message drafts. The remaining essentials are survey records/metadata, the original Climate Engine polygon and export settings, Eberhardt et al.'s annual wolf-kill estimates, and Person 4's Isle Royale results. No collaborator messages were sent automatically.
+## 📚 Key References
+- MacNulty, D. R., et al. (2016). Elk counts compiled for the northern Yellowstone herd.
+- Northern Yellowstone Cooperative Wildlife Working Group, annual winter elk counts.
+- National Park Service, Yellowstone Wolf Project annual reports (1995–2025).
+- National Park Service (2023). *Yellowstone Bison Population Status Report.*
+- Abatzoglou, J. T., et al. (2018). TerraClimate, a high-resolution global dataset of monthly climate. *Scientific Data.*

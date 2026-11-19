@@ -98,27 +98,11 @@ north_src[missing] = "interpolated"
 out["Wolf_Northern"] = north.interpolate(method="index").round().astype(int)
 out["Wolf_Northern_source"] = north_src
 
-# Apply audited corrections without modifying original source files.
-changes = []
-for row in pd.read_csv(ROOT / "data/corrections/verified_overrides.csv").itertuples():
-    changes.append(dict(Year=row.Year, variable=row.variable,
-        old_value=out.loc[row.Year, row.variable], new_value=row.value,
-        old_source=out.loc[row.Year, row.variable + "_source"],
-        new_source=row.source, url=row.url, note=row.note))
-    out.loc[row.Year, row.variable] = row.value
-    out.loc[row.Year, row.variable + "_source"] = row.source
-# Unverified HD313 coverage remains explicitly flagged, independently of imputation.
-out["Elk_Count_coverage_unresolved"] = out.Elk_Count_source.eq("count_hd313").astype(int)
-# 2020 was carried forward from the old HD313 series: do not silently certify it.
-out.loc[2020, "Elk_Count_coverage_unresolved"] = 1
-(ROOT / "reports/tables").mkdir(parents=True, exist_ok=True)
-pd.DataFrame(changes).to_csv(ROOT / "reports/tables/data_corrections.csv", index=False)
-
 # Optional 0/1 flag per variable for quick filtering in models
 for col in ["Elk_Count", "Bison_Count", "NDVI", "Precip_Annual", "PDSI_Annual",
             "Wolf_Park", "Wolf_Northern"]:
     s = out[f"{col}_source"]
-    out[f"{col}_imputed"] = (~s.isin(["count", "count_hd313", "count_whole_herd", "structural_zero"])).astype(int)
+    out[f"{col}_imputed"] = (~s.isin(["count", "count_hd313", "structural_zero"])).astype(int)
 
 out.index.name = "Year"
 OUT.parent.mkdir(parents=True, exist_ok=True)
