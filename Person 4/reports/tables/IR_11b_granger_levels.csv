@@ -1,0 +1,9 @@
+lag p,sample,wolves → moose p,moose → wolves p
+1,all years,0.006,0.105
+1,without 1997,0.005,0.111
+2,all years,0.017,0.115
+2,without 1997,0.011,0.113
+3,all years,0.006,0.223
+3,without 1997,0.009,0.219
+4,all years,0.017,0.218
+4,without 1997,0.034,0.221

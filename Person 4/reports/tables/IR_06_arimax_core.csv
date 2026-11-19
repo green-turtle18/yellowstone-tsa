@@ -1,0 +1,5 @@
+model,term,beta,p,pct_per_unit,pct_CI_low,pct_CI_high,n,AIC,BIC
+wolves,wolves,-0.064,0.214,-6.407,-16.51,3.695,56,-26.475,-20.399
+density,density,-0.129,0.043,-12.852,-25.288,-0.416,56,-25.239,-19.163
+wolves + density,wolves,-0.08,0.047,-8.038,-15.964,-0.111,56,-32.007,-23.906
+wolves + density,density,-0.169,0.018,-16.885,-30.9,-2.869,56,-32.007,-23.906

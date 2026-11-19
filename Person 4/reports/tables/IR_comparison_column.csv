@@ -1,0 +1,15 @@
+,Isle Royale
+system,Isle Royale
+years (prey growth),1960–2015 (n=56)
+"wolf effect alone, % prey growth per +10 wolves [95% CI]","-6.4 [-16.5, +3.7], p=0.214"
+"wolf effect with density, % per +10 wolves [95% CI]","-8.0 [-16.0, -0.1], p=0.047"
+"wolf effect with density, % per +1 SD of wolves",-7.4
+"Granger p, wolves → prey (VAR(1))",0.011
+"Granger p, prey → wolves (VAR(1))",0.182
+"forecast MAPE gain over drift, ARIMAX wolves (%)",+6.2
+"drift of log prey (mean growth, %/yr)",1.51
+"volatility of log prey (SD of growth, %)",19.2
+"Granger in levels, wolves → moose, p over lags 1–4",0.006–0.017
+"Granger in levels, moose → wolves, p over lags 1–4",0.105–0.223
+cointegrated (Johansen rank),0
+"cycle length (periodogram, log moose)",28.5 yr

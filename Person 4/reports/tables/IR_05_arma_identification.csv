@@ -1,0 +1,5 @@
+model,coefficients,all terms significant,residual variance,LjungBox_p(lag10),white-noise residuals,AIC,BIC
+white noise,—,True,0.036,0.9987,True,-23.191,-19.1403
+"ARMA(1,0)",ar.L1=0.071 (p=0.67),False,0.0358,0.9995,True,-21.4768,-15.4007
+"ARMA(2,0)","ar.L1=0.066 (p=0.71), ar.L2=0.073 (p=0.73)",False,0.0356,1.0,True,-19.7794,-11.678
+"ARMA(0,1)",ma.L1=0.061 (p=0.72),False,0.0359,0.9995,True,-21.4372,-15.3612
