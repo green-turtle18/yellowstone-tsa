@@ -7,7 +7,7 @@ This project asks whether wolves, hunting, winter severity, bison and climate ca
 - [Results and before/after comparison](reports/RESULTS.md)
 - [Completion checklist, ready-to-send requests and handoffs](reports/HANDOFF.md)
 - [Audited value/source changes](reports/tables/data_corrections.csv)
-- [Yellowstone–Isle Royale comparison, awaiting Person 4](reports/tables/person4_comparison.csv)
+- [Completed Yellowstone–Isle Royale comparison](../05_synthesis/report/COMPARISON.md)
 - [References and source decisions](reports/REFERENCES.md)
 
 ## Reproduce
@@ -18,7 +18,7 @@ From the `01_yellowstone_elk_wolves/` directory, with Python and `requirements.t
 python3 scripts/run_all.py
 ```
 
-This rebuilds the canonical flagged dataset, runs all analyses, generates the results summary, creates notebooks 03–05, executes notebooks 01–05, refreshes the candidate-data sensitivity outputs, runs numerical checks, regenerates the validation record, rebuilds the presentation, and refreshes the handoff archives. Failures stop the run. It uses a lightweight plain-Python notebook runner, so no Jupyter server is required. The runner captures printed output, final expressions and open Matplotlib figures; these notebooks do not use magics or shell cells. Jupyter can also open and execute them normally.
+This rebuilds the canonical flagged dataset, runs all analyses, generates the results summary, creates notebooks 03–05, executes notebooks 01–05, refreshes the candidate-data sensitivity outputs, runs numerical checks, regenerates the validation record, reruns the shared Isle Royale comparison and its checks, rebuilds the presentation, and refreshes the handoff archives. The full repository checkout (including Parts 04 and 05) is required for these comparison stages. Failures stop the run. It uses a lightweight plain-Python notebook runner, so no Jupyter server is required. The runner captures printed output, final expressions and open Matplotlib figures; these notebooks do not use magics or shell cells. Jupyter can also open and execute them normally.
 
 To run stages individually:
 
@@ -76,7 +76,7 @@ All numerical tables are in `reports/tables/`; figures are in `reports/figures/`
 
 ## Inputs needed from collaborators
 
-The detailed [handoff](reports/HANDOFF.md) specifies owners, exact files to send, return schemas and message drafts. The remaining essentials are survey records/metadata, the original Climate Engine polygon and export settings, and Person 4's Isle Royale results. No collaborator messages were sent automatically.
+The detailed [handoff](reports/HANDOFF.md) specifies owners, exact files to send, return schemas and message drafts. The remaining essentials are survey records/metadata, the original Climate Engine polygon and export settings. No collaborator messages were sent automatically.
 
 ## Completed Q6 removals comparison
 
@@ -84,6 +84,6 @@ See [Q6 report](supplements/q6_removals/README.md), [comparison notebook](supple
 
 ## Written conclusions
 
-[Report-ready Yellowstone conclusions](reports/CONCLUSIONS.md) cover the current analysis and its limitations. The cross-system section is explicitly pending the completed Isle Royale comparison.
+[Report-ready Yellowstone conclusions](reports/CONCLUSIONS.md) cover the current analysis and its limitations. The cross-system section links to the completed comparison using Person 4’s shared specification.
 
 Stationarity diagnostics use the longest contiguous observed annual segment (earliest on ties). Calendar-gap guards reject compressed master, VAR and state-model time grids. The rebuild uses the retained SNOTEL-derived severity file; rebuilding it from daily station data is a separate step.

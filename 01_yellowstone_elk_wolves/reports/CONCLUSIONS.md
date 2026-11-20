@@ -38,9 +38,15 @@ The state-space extension separates estimated process variation from observation
 
 The current annual series provides limited evidence that changes in wolf numbers alone explain or reliably predict changes in elk counts. The analysis quantifies uncertainty and shows that data definitions can affect interpretation, particularly for hunting removals and long-term risk scenarios. It neither disproves wolf effects nor isolates the causes of elk population change. Conclusions about trophic cascades would require evidence on vegetation, browsing and other ecological mechanisms beyond the annual series analysed here.
 
-## Cross-system comparison — to be completed
+## Cross-system comparison — completed
 
-**No Yellowstone–Isle Royale conclusion is asserted yet.** Once the matching Isle Royale analysis has been reviewed, compare wolf-effect estimates and intervals, both feedback directions, forecast gains against drift, and growth/volatility parameters. State the sample periods, missing-data treatment, survey differences and wolf-restoration regimes. Differences in p-values alone do not establish that ecological effects differ between systems. The available exploratory comparison is not a substitute for this final harmonised assessment.
+The [harmonised comparison](../../05_synthesis/report/COMPARISON.md) reruns both datasets with Person 4's shared specification and reproduces their original table. It also compares the same 1984–2015 window. This uses lagged wolf levels with prey density, whereas the original Yellowstone analysis above uses lagged changes in wolf numbers.
+
+Over 1984–2015, the density-adjusted wolf coefficient is -1.02 log-growth percentage points per ten wolves in Yellowstone (95% CI -3.00 to 0.96; p=0.312) and -23.66 in Isle Royale (95% CI -38.61 to -8.71; p=0.002). VAR(1) wolf-to-prey p-values are 0.530 and 0.009, respectively.
+
+On the same 22 eligible forecast years, wolf-only MAPE gain over drift is -5.31% for Yellowstone and +8.21% for Isle Royale. The stricter observed-input sensitivity has only seven shared forecast years and cannot support a precise ranking. Full scored years, diagnostics and uncertainty intervals are exported.
+
+These results show clearer statistical evidence of wolf-related predictive information in Isle Royale under these specifications. They do not establish a causal between-system difference. Reconstructed moose counts, different survey dates, geography and ecological regimes remain relevant. The systems' viability probabilities concern different species and thresholds and must not be directly compared. Isle Royale kill-rate observations remain unavailable for a direct kill-rate comparison.
 
 ## Evidence supporting this text
 

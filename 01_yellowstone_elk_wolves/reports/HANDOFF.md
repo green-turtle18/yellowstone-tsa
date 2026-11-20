@@ -59,24 +59,8 @@ The user supplied Eberhardt et al. (2007), DOI 10.2193/2005-770. Table 1 (printe
 
 **Send:** `supplements/q6_removals/q6_completion_handoff.zip`. Main table: `reports/tables/q6_removals_comparison.csv`. The earlier `q6_removals_pending.csv` is a historical placeholder only; do not use it for current results. Remaining caveats: no annual confidence intervals supplied, estimated fall components in 1998–2004, and headcounts do not quantify age-specific demographic effects.
 
-## 4. Person 4 — Isle Royale comparison
+## 4. Person 4 — population time-series comparison completed
 
-**Send:** `scripts/analysis.py`, `reports/tables/person4_comparison.csv`, `reports/tables/q1_robustness.csv`, `reports/tables/q2_lag_selection.csv`, `reports/tables/q3_scores.csv`, and `reports/run_manifest.json`.
+Person 4's data, shared specification and result column are available in `04_isle_royale/`. The current comparison is [COMPARISON.md](../../05_synthesis/report/COMPARISON.md), with native-window replication, a common 1984–2015 window, observed-input sensitivity and identical-year forecast scoring. Run `python 05_synthesis/scripts/build_comparison.py` from the repository root.
 
-**Ask back:** the filled Isle Royale column, source series/flags, years and sample sizes, model coefficients/CIs, both VAR(1) Granger p-values, drift and wolf-only MAE on identical eligible years, GBM log-drift and sample SD, and any deviations from the specification.
-
-Shared specifications:
-
-1. Annual target `log(prey_t)-log(prey_(t-1))`. Wolves regressor `(wolves_(t-1)-wolves_(t-2))/10`. ARIMA on growth with order (0,0,0), constant, Gaussian errors. Report the per-10-wolf effect and also standardised effect if absolute wolf scales differ greatly.
-2. VAR uses **contemporary** annual growth and wolf changes, so its built-in lag creates the lead relationship. Prespecify lag 1 and report lag-2 sensitivity and AIC/BIC. Yellowstone post-reintroduction system starts 1997; use an ecologically defensible Isle Royale window, label it, and consider a matched-period sensitivity.
-3. Rolling origin 2011–2025 where data permit. No full-sample feature selection/scaling. Exclude imputed target and previous prey count; retain calendar gaps. Train from observed adjacent prey transitions. Score drift and wolves-only on identical years. Report MAE gain as `100*(1-MAE_wolf/MAE_drift)`. Confirm predictor release dates; otherwise label retrospective.
-4. GBM parameters from adjacent observed annual log changes: mean and SD with ddof=1. Never treat a multi-year gap as one annual change. Report selection sensitivity. Absolute thresholds 2,000/4,000 are Yellowstone-specific, not automatic Isle Royale thresholds.
-5. Do not merge raw coefficients across mismatched prey geographies, count protocols or time windows without stating those differences.
-
-**Ready-to-send request:**
-
-> The Yellowstone side and reproducible model specifications are attached. Please run the matching Isle Royale wolf-only model, two-way VAR(1), matched-year rolling evaluation, and GBM calibration. Fill the Isle_Royale column, return n/years and provenance, and note any departures. Blank comparison cells are intentional pending your results.
-
-## Finalisation after handoffs
-
-Add verified records to `data/corrections/verified_overrides.csv`; update missing/source flags where necessary; rerun `python3 scripts/run_all.py`; review changed coefficients and forecast eligibility; then fill the comparison and write final conclusions. No need to request approval for routine reruns or code corrections. Optional decision-tree and Diebold–Mariano extensions are omitted: neither resolves the current data-quality limitations.
+The old `reports/tables/person4_comparison.csv` is retained as a historical exchange template for the original Yellowstone delta-wolf model. Its blank Isle Royale column is not the current comparison. The new Yellowstone handoff column is `05_synthesis/reports/tables/YS_comparison_column.csv` and the combined table is `native_windows_comparison.csv` in that directory. No collaborator message is required to complete this comparison. Kill rates, source metadata and survey limitations remain documented separately.
