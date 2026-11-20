@@ -28,5 +28,9 @@ with zipfile.ZipFile(ROOT/'presentation/Yellowstone_Findings.pptx') as z:
   actual=[[float(v.text) for v in ser.findall('c:val/c:numRef/c:numCache/c:pt/c:v',C)] for ser in chart.findall('.//c:ser',C)]
   assert actual==series,(index,actual,series)
  assert float(ET.fromstring(z.read('ppt/charts/chart4.xml')).find('.//c:valAx/c:scaling/c:min',C).attrib['val'])<0
- assert len([n for n in names if n.startswith('ppt/slides/slide') and n.endswith('.xml')])==7
-print('Presentation checks passed: seven slides, four charts, exact source values and valid package links.')
+ assert len([n for n in names if n.startswith('ppt/slides/slide') and n.endswith('.xml')])==10
+ with_notes=[n for n in names if n.startswith('ppt/notesSlides/notesSlide') and n.endswith('.xml')]
+ assert len(with_notes)==10
+ text=' '.join(z.read(n).decode() for n in names if n.startswith('ppt/slides/slide') and n.endswith('.xml'))
+ for required in ['Granger causality','Gompertz','State-space','gₜ =','c = 0']:assert required in text,required
+print('Presentation checks passed: ten slides, four charts, exact source values and valid package links.')

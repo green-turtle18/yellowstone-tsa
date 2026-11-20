@@ -7,7 +7,7 @@ Completes the population time-series comparison using Person 4's shared specific
 - Scores both systems on identical calendar years for the common-window forecast comparison.
 - Keeps the original Yellowstone change-in-wolves results distinct from the comparison's lagged-wolf-level models.
 - Adds comparison tables, confidence-interval and forecast graphs, provenance hashes, and five comparison tests.
-- Updates conclusions, handoff notes and the seven-slide presentation, which now contains four editable charts.
+- Updates conclusions, handoff notes and the ten-slide presentation, with model equations, a dedicated Granger-causality explanation, presenter notes and four editable charts.
 - Aligns the synthesis forecast graph with the matched-year headline results and documents the two per-SD scaling conventions.
 - Extends the rebuild to regenerate the comparison, validate slide values and package links, and refresh handoff archives.
 - Removes obsolete notebook-cache entries from handoff packaging and corrects old relocation instructions.

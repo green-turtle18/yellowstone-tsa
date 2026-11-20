@@ -33,68 +33,128 @@ chart_specs=[
 def chart_frame(i,index,x,y,w,h):
  return f'<p:graphicFrame><p:nvGraphicFramePr><p:cNvPr id="{i}" name="Editable evidence chart"/><p:cNvGraphicFramePr/><p:nvPr/></p:nvGraphicFramePr><p:xfrm><a:off x="{emu(x)}" y="{emu(y)}"/><a:ext cx="{emu(w)}" cy="{emu(h)}"/></p:xfrm><a:graphic><a:graphicData uri="{NS}/drawingml/2006/chart"><c:chart xmlns:c="{NS}/drawingml/2006/chart" r:id="rIdChart{index}"/></a:graphicData></a:graphic></p:graphicFrame>'
 slides=[]
+slide_charts={}
 def add(title,subtitle,parts,notes,source):
  n=len(slides)+1
  shapes=box(2,title,.65,.45,12,1.05,32,DARK,True)+box(3,subtitle,.65,1.48,12,.65,19,GRAY)
  for j,part in enumerate(parts,4):
-  if part[0]=='c':shapes+=chart_frame(j,*part[1:])
+  if part[0]=='c':
+   shapes+=chart_frame(j,*part[1:]);slide_charts[n]=part[1]
   elif part[0]=='t':shapes+=table(j,*part[1:])
   else:shapes+=box(j,*part[1:])
  shapes+=box(90,source,.65,6.93,11.2,.35,10,GRAY)+box(91,str(n),12.05,6.93,.45,.35,11,GRAY)
  slides.append((shapes,notes,title))
-add('Yellowstone elk and wolves','Person 1 findings • Annual time-series analysis, 1984–2025',[
- ('b','How much do wolves help explain and predict elk counts?',.65,2.35,11.8,1.1,32,DARK,True),
- ('b','The current models show an uncertain wolf association and only a small forecasting gain.',.65,3.7,11.5,1.1,26,INK,False),
- ('b','Scope: drivers and feedback, winter conditions, structural change, removals and viability scenarios.',.65,5.05,11.6,.9,21,GRAY,False),
- ('b','Current-data conclusions, including the Isle Royale comparison.',.65,6.15,11.6,.45,18,ACCENT,False)],
- 'The primary dataset is the corrected, flagged Yellowstone master, with 42 annual rows. Numerical entries include estimates and are not 42 fully comparable observations. Model samples differ. Recovered wolf counts are a separate sensitivity scenario. Q0 data audit, Q1 drivers, Q2 feedback, Q3 predictions, Q4 winter, Q5 breaks, Q6 removals, Q7 viability and R observation error are covered. Source: reports/CONCLUSIONS.md and reports/RESULTS.md. Prepared 20 November 2026.','Source: reports/CONCLUSIONS.md • Current analysis, 20 November 2026')
-add('Wolf effects and feedback remain uncertain','Q1–Q2: annual elk log growth and changes in northern wolf numbers',[
- ('t',[['Test','Estimate or result','p-value'],['Wolf-only model','−0.0305 per +10 wolves','0.120'],['Full driver model','−0.0273 per +10 wolves','0.408'],['Wolves predict elk, VAR(1)','No clear predictive feedback','0.176'],['Elk predict wolves, VAR(1)','No clear predictive feedback','0.797']],[4.35,5.25,2.3],2.35,.65,20),
- ('b','Wolf-only 95% CI: −0.0690 to +0.0080 (n = 40).\nAIC and BIC prefer zero lags within the tested range.',.65,5.85,11.8,.85,20,INK,False)],
- 'The regressor is (wolves[t−1]−wolves[t−2])/10, and the outcome is log(elk[t])−log(elk[t−1]). A ten-wolf increase refers to the preceding annual change, not a level effect. The wolf-only interval includes negative and small positive associations. Full model includes the other covariates. Non-significance does not prove no biological effect. Granger tests concern predictive information, not causation. Both AIC and BIC prefer lag 0. Sources: reports/tables/q1_coefficients.csv, q2_granger.csv, q2_lag_selection.csv.','Sources: q1_coefficients.csv, q2_granger.csv, q2_lag_selection.csv')
-add('Wolves add little forecasting accuracy','Q3: mean absolute error in elk, on the same nine eligible years',[
- ('c',1,.65,2.15,11.9,3.25),
- ('b','Wolf-only gain over drift: 1.7% in the primary analysis.\nReplacing five interpolated wolf counts barely changes that result.',.65,5.45,11.8,.9,22,INK,False),
- ('b','Small retrospective sample. Predictor release dates are unverified.',.65,6.4,11.8,.4,17,ACCENT,False)],
- 'Evaluation years: 2011, 2012, 2013, 2017, 2018, 2019, 2023, 2024, 2025. Training transformations use training data only, and scoring excludes imputed targets/prior counts and unresolved coverage. Full-model predictors include information potentially after some surveys. These are conditional retrospective predictions. No statistical significance is asserted for MAE differences. Candidate northern counts for 1996–2000 are 19,32,42,35,65. Conflicting source values for other years remain unresolved. Sources: reports/tables/q3_scores.csv and supplements/gap_research/forecast_sensitivity.csv.','Sources: q3_scores.csv and gap_research/forecast_sensitivity.csv')
-add('Winter and break tests give limited evidence','Q4–Q5 and R: different tests answer different questions',[
- ('t',[['Analysis','Finding'],['Wolf × winter interaction','p = 0.990'],['Breaks in mean annual log growth','BIC selects no breaks'],['Separate continuous trend-break search','Lowest residual error at 2014'],['State-space survey-error model','Process SD 0.112; observation SD 0.087']],[6.4,5.5],2.3,.72,19),
- ('b','The 2014 trend result does not identify a cause.\nSurvey-error modelling still cannot resolve unknown sightability bias.',.65,6.2,11.8,.65,19,INK,False)],
- 'Winter interaction does not distinguish additive from compensatory mortality. Exposure windows are not fully aligned to survey dates. Growth-mean break selection and the trend-break search are different hypotheses. The selected trend date is not a formal causal attribution or a Bai–Perron confidence set. The growth-state model converges with 33 observed values on a 40-year model grid. SDs are on the fitted latent log-count/process and observation scale, not numbers of elk. Spatial mismatches remain. Sources: q4_interaction.csv, q5_mean_breaks.csv, q5_trend_breaks.csv, r_variance_components.csv.','Sources: q4_interaction.csv, q5_*breaks.csv, r_variance_components.csv')
-add('The hunting definition changes the comparison','Q6: published estimated wolf kills and hunting removals, 1996–2004',[
- ('c',2,.65,2.05,8.5,3.65),
- ('b','1996–2004 totals\n12,512 wolf kills\n11,653 published hunt\n\nCrossover year\n2000: published hunt\n2001: fall + late hunt',9.45,2.4,3.25,3.1,18,INK,False),
- ('b','All nine published hunting figures match late hunt.\nThe broader total includes estimated fall harvest in 1998–2004.',.65,5.85,11.8,.75,20,INK,False),
- ('b','Different age profiles mean removal counts alone cannot rank demographic effects.',.65,6.55,11.8,.35,16,ACCENT,False)],
- 'Eberhardt et al. (2007), A Seventy-Year History of Trends in Yellowstone’s Northern Elk Herd, J Wildlife Management 71:594–602, DOI 10.2193/2005-770. Table 1, PDF page 5 / printed p.598, user-provided paper. Total kills by year: 517,591,788,1182,1084,1773,1897,2069,2611. Hunting: 1400,2465,1313,1683,974,1259,1139,718,702. Winter-year labels match existing harvest seasons. The plotted fall-plus-late series includes estimated fall components for 1998–2004. No annual confidence intervals are available for the wolf estimates. Published 0.26 adjustment reflects prime-age classes and is retained separately, not used as total kills. No annual uncertainty intervals are supplied. The joint standardised regression has p=0.145 for wolves and p=0.907 for harvest, so it cannot establish a ranking either. Sources: supplements/q6_removals/README.md and reports/tables/q6_hunting_vs_wolves.csv.','Source: Eberhardt et al. (2007), Table 1, p.598 • DOI: 10.2193/2005-770')
+# Presentation narrative: equations and interpretation before numerical detail.
 risk=read_csv(T/'q7_threshold_probabilities.csv')
 risk10=[r for r in risk if int(r['horizon'])==10]
 chart_specs.append(('bar',['Below 2,000','Below 4,000'],[('GBM continuous',[100*float(r['GBM_continuous']) for r in risk10]),('GBM annual monitoring',[100*float(r['GBM_annual_sim']) for r in risk10])],'10-year crossing probability (%)'))
-add('Viability estimates are uncertain scenarios','Q7: ten-year survey-count threshold crossings, starting at 7,226',[
- ('c',3,.65,2.15,8.1,3.7),
- ('b','Below 4,000\n38.7% continuous\nBootstrap interval\n6.9%–78.7%',9.15,2.65,3.5,2.25,23,ACCENT,True),
- ('b','27 eligible annual transitions. Drift −0.0157, volatility 0.1790.\nGompertz φ = 0.9973, bootstrap LR p = 0.986.',.65,5.95,11.8,.7,19,INK,False),
- ('b','Monitoring frequency changes the result. These are model scenarios, not extinction risks.',.65,6.65,11.8,.3,16,GRAY,False)],
- 'Continuous first passage counts any crossing during ten years. Annual monitoring checks only at yearly intervals and can miss crossings between observations. The bootstrap interval covers parameter uncertainty conditional on GBM, not systematic survey bias or future ecological changes. Thresholds apply to a survey-count index. Source: reports/tables/q7_threshold_probabilities.csv and q7_parameters.csv. No management or extinction forecast is asserted.',
- 'Sources: q7_parameters.csv and q7_threshold_probabilities.csv')
 comparison_dir=ROOT.parents[1]/'05_synthesis/reports/tables'
 comparison={r['system']:r for r in read_csv(comparison_dir/'comparison_summary.csv') if r['scenario']=='common_1984_2015'}
 matched_forecasts={r['system']:r for r in read_csv(comparison_dir/'matched_calendar_forecast_scores.csv') if r['scenario']=='common_1984_2015' and r['model']=='ARIMAX wolves'}
 chart_specs.append(('bar',['Yellowstone','Isle Royale'],[('MAPE gain over drift',[float(matched_forecasts[name]['MAPE gain over drift %']) for name in ['Yellowstone','Isle Royale']])],'Forecast improvement over drift (%)'))
-add('Yellowstone and Isle Royale comparison','Shared 1984–2015 model window, forecasts scored on the same 22 years',[
- ('c',4,.65,2.15,7.0,3.55),
- ('b',f"Wolf-to-prey Granger p\nYellowstone: {float(comparison['Yellowstone']['granger_wolf_p']):.3f}\nIsle Royale: {float(comparison['Isle Royale']['granger_wolf_p']):.3f}\n\nDensity-adjusted wolf p\nYellowstone: {float(comparison['Yellowstone']['p']):.3f}\nIsle Royale: {float(comparison['Isle Royale']['p']):.3f}",8.1,2.35,4.55,3.2,20,INK,False),
- ('b','Clearer predictive evidence in Isle Royale under these models.\nThis does not establish a causal difference between ecosystems.',.65,5.85,11.8,.8,21,DARK,True),
- ('b','Survey differences, reconstructed counts and small sensitivity samples remain.',.65,6.65,11.8,.3,16,ACCENT,False)],
- 'Source: 05_synthesis/report/COMPARISON.md and reports/tables in that folder. Both systems use Person 4 specification 1.3. Lagged wolf levels and density differ from the original Yellowstone change-in-wolves model. Full coefficients and 95% intervals are in comparison_summary.csv. Negative forecast gain means worse performance than drift. Shared 22-year forecasts include filled training inputs; strict observed-input sensitivity has only seven shared years. Differences in significance do not prove different ecological effects. Survey timing, source conflicts and missing Isle Royale kill rates remain documented.',
+coefficients=read_csv(T/'q1_coefficients.csv')
+wolf=next(r for r in coefficients if r['model']=='d_wolves' and r['term']=='d_wolves')
+full=next(r for r in coefficients if r['model']=='full' and r['term']=='d_wolves')
+granger=[r for r in read_csv(T/'q2_granger.csv') if r['model']=='VAR(1)']
+def body(text,y,size=24,color=INK,bold=False):return ('b',text,.7,y,11.8,.9,size,color,bold)
+def cue(text):return body(text,6.25,21,ACCENT,True)
+
+add('Do wolves help explain elk population change?',
+ 'Part 1: northern Yellowstone, 1984–2025',[
+ body('We separate three questions: association, prediction and future risk.',2.25,27,DARK,True),
+ body('42 annual rows combine elk counts with wolves, hunting, bison,\nwinter severity, vegetation and climate.',3.4),
+ body('Survey counts can change when animals change or when detection changes.\nEstimated entries remain flagged and sensitivity checks use alternative inputs.',4.65,22),
+ cue('Main message: an uncertain wolf association and only a small forecast gain.')],
+ 'OPEN: We are testing whether wolves add information about elk changes, rather than assuming that every decline after reintroduction was caused by wolves.\nEXPLAIN: Annual observational data contain several competing influences. Surveys are counts, not complete censuses. The 42 rows do not mean 42 equally comparable direct observations.\nDATA CAVEAT: Whole-herd coverage in 2020–2021, some historical estimates, wolf/elk geography and climate metadata remain unresolved. Recovered wolf counts for 1996–2000 form a separate scenario.\nTRANSITION: First define the outcome and the competing models. Sources: reports/CONCLUSIONS.md and HANDOFF.md.',
+ 'Sources: CONCLUSIONS.md and HANDOFF.md')
+
+add('Models considered: growth, drivers and memory',
+ 'N = elk count; W = northern wolf count; t = annual observation',[
+ body('Outcome: gₜ = log(Nₜ / Nₜ₋₁)      Wolf change: xₜ = (Wₜ₋₁ − Wₜ₋₂) / 10',2.15,25,DARK,True),
+ body('Drift benchmark: gₜ = α + εₜ\nWolf-only model: gₜ = α + βxₜ + uₜ',3.15,25),
+ body('Full model: gₜ = α + βxₜ + γ′Zₜ + uₜ\nZ contains the other drivers, transformed and aligned to their time windows.',4.35,23),
+ body('ARMA error example: uₜ = φuₜ₋₁ + εₜ + θεₜ₋₁',5.4,23),
+ cue('We check stationarity, compare model fit and test what remains in the errors.')],
+ 'OPEN: We model proportional annual change, not just the raw number of elk.\nEXAMPLE: A fall from 10,000 to 9,000 gives log(0.9) = −0.1054, which is an exact 10% decline. A preceding increase of ten wolves makes x equal to one.\nMODELS: We compare drift, single-driver models and a full model. The full driver set includes lagged bison log change, NDVI, precipitation, PDSI, harvest rate and winter severity. Timing and transformation rules differ by variable.\nERROR MODELS: AR(p) uses previous values, MA(q) uses previous innovations, and ARMA combines both. In regression-with-ARMA-errors notation, u_t = sum(phi_i u_(t-i)) + epsilon_t + sum(theta_j epsilon_(t-j)). Primary driver estimates use white-noise errors, with dynamic-error robustness checks including MA(2). EDA compares candidate ARMA orders.\nCHECKS: ADF tests a unit-root null; KPSS tests stationarity. AIC/BIC penalise complexity. Ljung–Box checks residual autocorrelation and ARCH LM checks conditional variance patterns. Forecast transformations are learned within each training window. Source: scripts/analysis.py, q1_stationarity.csv and q1_diagnostics.csv.',
+ 'Sources: analysis.py, q1_stationarity.csv and q1_diagnostics.csv')
+
+add('The wolf estimate is negative but uncertain',
+ 'Q1: association with the preceding change in wolf numbers',[
+ body(f"Wolf-only estimate: β = {float(wolf['estimate']):.4f}     p = {float(wolf['p']):.3f}",2.2,29,DARK,True),
+ body(f"95% interval: {float(wolf['ci_low']):.4f} to +{float(wolf['ci_high']):.4f}\nThe interval includes zero, negative effects and small positive effects.",3.25,24),
+ body(f"Adding other drivers does not make the wolf association clear.\nFull-model wolf estimate: {float(full['estimate']):.4f}, p = {float(full['p']):.3f}.",4.6,24),
+ cue('A non-significant result does not show that wolves have no biological effect.')],
+ 'OPEN: The point estimate is negative, but its uncertainty is central to the conclusion.\nEXAMPLE: For a ten-wolf increase in the preceding annual change, the model predicts 0.0305 lower log elk growth. exp(−0.0305) is about 0.970, a roughly 3% lower prediction relative to the same model without that predictor increment. This is not a count of animals killed.\nINTERPRET: The confidence interval crosses zero and p is 0.120. The full model also does not establish an independent wolf association. Small samples, survey noise and correlated drivers limit power.\nVIVA: A p-value is calculated under the null; it is not the probability that wolves have no effect. Seven single-driver screens also have Bonferroni adjustments.\nTRANSITION: Association is one question. The next asks whether past wolves improve prediction beyond elk history. Source: q1_coefficients.csv.',
+ 'Source: q1_coefficients.csv')
+
+add('Granger causality: does wolf history help?',
+ 'Q2: VAR(1) tests predictive information in both directions',[
+ body('gₜ = a + b gₜ₋₁ + c vₜ₋₁ + εₜ\nvₜ = d + e gₜ₋₁ + f vₜ₋₁ + ηₜ',2.1,28,DARK,True),
+ body('gₜ = annual log elk growth; vₜ = (Wₜ − Wₜ₋₁) / 10.\nTest c = 0 for wolves predicting elk; test e = 0 for the reverse direction.',3.45,22),
+ body(f"Wolves → elk: p = {float(granger[0]['p']):.3f}     Elk → wolves: p = {float(granger[1]['p']):.3f}\nNeither direction provides clear evidence in the original Yellowstone model.",4.75,23),
+ cue('“Granger-causes” means “adds predictive information”, not “proves causation”.')],
+ 'OPEN: We first predict elk growth from its own history. Then we ask whether adding wolf history helps.\nMODEL: v is contemporary scaled wolf change, and the VAR supplies the one-year lag. Thus v_(t−1) is the same preceding wolf-change predictor used in the driver model. In the first equation c tests wolves to elk; in the second e tests elk to wolves.\nRESULTS: VAR(1) p-values are 0.176 and 0.797. The prespecified one-lag model has 28 fitted observations. VAR(2) sensitivity also does not reject either direction at 5%. Both AIC and BIC prefer zero lags among those considered, which weakens support for a feedback interpretation.\nCAVEAT: Omitted weather, observation changes and limited power can affect these tests. This is predictive information, not a controlled ecological intervention.\nTRANSITION: The forecast test asks whether any of this improves actual held-out prediction. Sources: q2_granger.csv and q2_lag_selection.csv.',
+ 'Sources: q2_granger.csv and q2_lag_selection.csv')
+
+add('Forecast gains are small on held-out years',
+ 'Q3: expanding training windows; the same nine eligible test years',[
+ ('c',1,.65,2.05,8.0,3.65),
+ ('b','Train on the past.\nPredict the next year.\nCompare with drift.\n\nLower error is better.',9.05,2.6,3.5,2.4,24,INK,False),
+ body('Wolf-only MAE is 986 elk versus 1,004 for drift: about 1.7% better.\nThe full conditional model performs worse; recovered wolves barely change the ranking.',5.8,21),
+ ],
+ 'OPEN: A useful model should beat a simple forecast, not merely fit the historical record.\nEQUATIONS: Drift forecast Nhat_t = N_(t−1) exp(mean training log growth). MAE = mean(abs(actual − forecast)). Gain = 100 × (1 − model MAE / drift MAE).\nDESIGN: Train up to t−1 and predict t. Eligible years are 2011–2013, 2017–2019 and 2023–2025. Target and origin counts must meet the scoring rules. Avoid future interpolation and full-sample transformation selection.\nRESULT: Primary MAEs are 1003.8, 986.4 and 1402.1 for drift, wolf-only and full conditional. The recovered-wolf scenario gives 983.1 and 1302.1 for the two driver models.\nCAVEAT: Nine years are a small retrospective evaluation. Predictor publication dates are unverified, so do not claim established real-time forecast skill or statistically significant improvement. Sources: q3_scores.csv and forecast_sensitivity.csv.',
+ 'Sources: q3_scores.csv and forecast_sensitivity.csv')
+
+add('Winter interactions and structural changes',
+ 'Q4–Q5: a changing association differs from a changing trend',[
+ body('Interaction: gₜ = α + βxₜ + γsₜ + δxₜsₜ + uₜ\nsₜ is the transformed winter-severity predictor.',2.1,24,DARK,True),
+ body('Does the wolf association vary with winter severity?\nThe fitted interaction gives p = 0.990: no clear evidence here.',3.4,24),
+ body('Trend break: log(Nₜ) = a + bt + d max(0, t − τ) + uₜ\nSeparate tests select no growth-mean break, but the trend search favours 2014.',4.7,22),
+ cue('The break date does not identify a cause; these tests ask different questions.')],
+ 'OPEN: Wolves could matter differently in severe winters. An interaction allows the wolf slope to vary with winter conditions.\nEQUATION: The wolf slope is β + δs. The displayed interaction equation is schematic; the fitted model includes its specified controls. p=0.990 gives no evidence of a changing slope in this specification. Winter exposure windows may extend beyond some surveys. This does not distinguish additive from compensatory mortality.\nBREAKS: The growth-mean search uses exact segmentation, minimum segment lengths, BIC and the zero-break option. It selects zero breaks. A separate continuous piecewise-linear trend search has lowest RSS at 2014. The hinge term changes slope without forcing a discontinuous jump.\nCAVEAT: This is not a formal Bai–Perron confidence set or causal attribution to an event. Sources: q4_interaction.csv, q5_mean_breaks.csv and q5_trend_breaks.csv.',
+ 'Sources: q4_interaction.csv and q5_*breaks.csv')
+
+add('State-space model: counts contain survey noise',
+ 'R extension: separate latent population variation from measurement error',[
+ body('Latent state: xₜ = xₜ₋₁ + μ + β′zₜ + ηₜ\nObserved log count: log(Cₜ) = xₜ + εₜ',2.1,27,DARK,True),
+ body('ηₜ represents process variation; εₜ represents observation noise.\nThe Kalman filter balances model expectations with each new count.',3.5,23),
+ body('A sudden count drop need not be entirely a population crash.\nEstimated process SD = 0.112; observation SD = 0.087, on the log scale.',4.75,23),
+ cue('Random observation error is modelled; unknown detection bias remains unresolved.')],
+ 'OPEN: The observed count mixes animal dynamics with the survey process. A state-space model explicitly separates those sources of variation under its assumptions.\nNOTATION: x is the latent log abundance index, z is the aligned driver vector, eta is process noise and epsilon is observation noise. The symbol x here is not the wolf predictor on earlier slides.\nEXAMPLE: If a survey suddenly misses more elk, a model without observation error would force the full drop into population dynamics. This model can distribute it between process and observation variation.\nKALMAN: A noisy observation gets less weight than a precise one. Filtering uses information through that year. Smoothing uses later data too and is not a real-time forecast.\nLIMIT: Random-noise separation does not identify unknown sightability, changing area coverage or systematic measurement bias. The fitted state model uses 33 observed counts on a 40-year grid. Source: r_variance_components.csv and analysis.py.',
+ 'Sources: analysis.py and r_variance_components.csv')
+
+add('Hunting definitions change the removals comparison',
+ 'Q6: published wolf-kill estimates and hunting removals, 1996–2004',[
+ ('c',2,.65,2.05,8.1,3.65),
+ ('b','Wolf kills overtake\npublished / late hunt\nin 2000.\n\nUsing fall + late hunt\nmoves this to 2001.',9.1,2.35,3.5,3.0,22,INK,False),
+ body('Totals: 12,512 estimated wolf kills and 11,653 published hunting removals.\nDifferent age profiles mean headcounts alone cannot rank population impacts.',5.85,21)],
+ 'OPEN: This is a descriptive comparison of estimated removals, not a direct test of which mechanism matters more for population growth.\nSOURCE: Eberhardt et al. (2007), Table 1, printed page 598, DOI 10.2193/2005-770. The published hunting values match late hunt in all nine years. The broader project harvest series adds fall hunting, including estimated fall components for 1998–2004.\nEXPLAIN: That definition changes the crossover from 2000 to 2001. Neither comparison supplies the age-specific reproductive impact of the removals.\nCAVEATS: Annual wolf-kill confidence intervals are unavailable in the source table. The separate 26% adjustment concerns prime adult classes and is not total kills. Additive mortality increases deaths; compensatory mortality partly replaces other deaths. These totals cannot settle that distinction. Source: q6_removals_comparison.csv.',
+ 'Source: Eberhardt et al. (2007), Table 1, DOI 10.2193/2005-770')
+
+add('Viability models describe uncertain scenarios',
+ 'Q7: survey-count thresholds, starting from 7,226',[
+ body('GBM: d log(Nₜ) = μ dt + σ dBₜ\nGompertz: log(Nₜ) = a + φ log(Nₜ₋₁) + εₜ',2.05,25,DARK,True),
+ ('c',3,.65,3.25,7.6,2.95),
+ ('b','Below 4,000 in ten years:\n38.7% continuous crossing.\nBootstrap interval: 6.9%–78.7%.\n\nGompertz is close to a random walk.',8.65,3.5,4.0,2.5,20,INK,False),
+ cue('Crossing below a count threshold is different from extinction or the year-ten endpoint.')],
+ 'OPEN: These models ask what paths are possible if the fitted dynamics continue. They are scenarios, not management forecasts.\nGBM: μ is average log growth, σ is volatility, and B is Brownian motion. Estimates are μ=−0.0157 and σ=0.1790 from 27 eligible adjacent transitions. The population-scale drift would be μ + σ²/2.\nGOMPERTZ: Density dependence can make log abundance return toward an equilibrium when 0<φ<1. Here φ=0.9973 and bootstrap LR p=0.986 provide little support over a random walk.\nGRAPH: Annual checks miss crossings between years. A count may fall below 4,000 and recover before year ten, so first passage differs from endpoint probability. Brownian-bridge simulation checks the continuous result.\nUNCERTAINTY: The 6.9%–78.7% interval is parameter uncertainty conditional on GBM, not all ecological or survey uncertainty. Future interventions and systematic bias are omitted. Source: q7_parameters.csv and q7_threshold_probabilities.csv.',
+ 'Sources: q7_parameters.csv and q7_threshold_probabilities.csv')
+
+add('Isle Royale provides a comparison, not a causal test',
+ 'Shared model: lagged wolf levels and prey density; common 1984–2015 window',[
+ body('gₜ = α + β(Wₜ₋₁ / 10) + γ[log(Nₜ₋₁) − mean] + uₜ',2.05,25,DARK,True),
+ ('c',4,.65,3.05,7.4,2.9),
+ ('b',f"Same 22 forecast years.\nPositive gain means lower error.\n\nShared VAR wolves → prey p:\nYellowstone {float(comparison['Yellowstone']['granger_wolf_p']):.3f}; Isle Royale {float(comparison['Isle Royale']['granger_wolf_p']):.3f}.",8.55,3.3,4.1,2.4,21,INK,False),
+ cue('Conclusion: clearer predictive evidence in Isle Royale, with important data limitations.')],
+ 'OPEN: We rerun both systems with the same shared specification, rather than comparing coefficients from different models.\nDIFFERENCE: This model uses lagged wolf levels and prey density. The original Yellowstone headline uses lagged wolf changes. The comparison VAR uses prey and wolf log growth, whereas the original Yellowstone VAR uses prey log growth and scaled wolf-number changes. Thus their p-values are not interchangeable.\nRESULT: On identical 22 test years, MAPE gain is −5.31% in Yellowstone and +8.21% in Isle Royale. Common-window wolf-to-prey Granger p-values are 0.530 and 0.009. The strict observed-input sensitivity has only seven common forecast years.\nCLOSE: The Yellowstone data do not establish a clear independent wolf effect, and the forecast gain in the original specification is small. Isle Royale provides clearer predictive evidence under shared models. This neither disproves wolf biology in Yellowstone nor proves a causal difference between ecosystems.\nLIMITS: Reconstructed moose counts, survey timing, geography and ecological regimes differ. Remaining kill-rate observations are unavailable. The two systems’ viability probabilities refer to different events and should not be directly ranked. Sources: 05_synthesis/report/COMPARISON.md and its tables.',
  'Sources: comparison_summary.csv and matched_calendar_forecast_scores.csv')
 GROUP='<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>'
 def rels(items):return '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+''.join(f'<Relationship Id="{id}" Type="{R}/{typ}" Target="{target}"/>' for id,typ,target in items)+'</Relationships>'
 def root(tag):return f'<{tag} xmlns:a="{A}" xmlns:r="{R}" xmlns:p="{P}">'
 parts={}
 parts['_rels/.rels']=rels([('rId1','officeDocument','ppt/presentation.xml')])
-parts['ppt/presentation.xml']=root('p:presentation')+'<p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst><p:sldIdLst>'+''.join(f'<p:sldId id="{255+i}" r:id="rId{i+1}"/>' for i in range(1,8))+f'</p:sldIdLst><p:sldSz cx="{W}" cy="{H}"/><p:notesSz cx="6858000" cy="9144000"/></p:presentation>'
-parts['ppt/_rels/presentation.xml.rels']=rels([('rId1','slideMaster','slideMasters/slideMaster1.xml')]+[(f'rId{i+1}','slide',f'slides/slide{i}.xml') for i in range(1,8)])
+parts['ppt/presentation.xml']=root('p:presentation')+'<p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst><p:sldIdLst>'+''.join(f'<p:sldId id="{255+i}" r:id="rId{i+1}"/>' for i in range(1,len(slides)+1))+f'</p:sldIdLst><p:sldSz cx="{W}" cy="{H}"/><p:notesSz cx="6858000" cy="9144000"/></p:presentation>'
+parts['ppt/_rels/presentation.xml.rels']=rels([('rId1','slideMaster','slideMasters/slideMaster1.xml')]+[(f'rId{i+1}','slide',f'slides/slide{i}.xml') for i in range(1,len(slides)+1)])
 parts['ppt/slideMasters/slideMaster1.xml']=root('p:sldMaster')+'<p:cSld><p:spTree>'+GROUP+'</p:spTree></p:cSld><p:clrMap accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" bg1="lt1" bg2="lt2" folHlink="folHlink" hlink="hlink" tx1="dk1" tx2="dk2"/><p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst><p:txStyles><p:titleStyle/><p:bodyStyle/><p:otherStyle/></p:txStyles></p:sldMaster>'
 parts['ppt/slideMasters/_rels/slideMaster1.xml.rels']=rels([('rId1','slideLayout','../slideLayouts/slideLayout1.xml'),('rId2','theme','../theme/theme1.xml')])
 parts['ppt/slideLayouts/slideLayout1.xml']=root('p:sldLayout').replace('>',' type="blank" preserve="1">',1)+'<p:cSld name="Blank"><p:spTree>'+GROUP+'</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sldLayout>'
@@ -103,7 +163,7 @@ colors={'dk1':INK,'lt1':'FFFFFF','dk2':DARK,'lt2':BG,'accent1':DARK,'accent2':AC
 parts['ppt/theme/theme1.xml']=f'<a:theme xmlns:a="{A}" name="Yellowstone"><a:themeElements><a:clrScheme name="Forest">'+''.join(f'<a:{k}><a:srgbClr val="{v}"/></a:{k}>' for k,v in colors.items())+'</a:clrScheme><a:fontScheme name="Arial"><a:majorFont><a:latin typeface="Arial"/><a:ea typeface=""/><a:cs typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Arial"/><a:ea typeface=""/><a:cs typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Simple"><a:fillStyleLst>'+('<a:solidFill><a:schemeClr val="phClr"/></a:solidFill>'*3)+'</a:fillStyleLst><a:lnStyleLst>'+('<a:ln w="9525"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln>'*3)+'</a:lnStyleLst><a:effectStyleLst>'+('<a:effectStyle><a:effectLst/></a:effectStyle>'*3)+'</a:effectStyleLst><a:bgFillStyleLst>'+('<a:solidFill><a:schemeClr val="phClr"/></a:solidFill>'*3)+'</a:bgFillStyleLst></a:fmtScheme></a:themeElements></a:theme>'
 for i,(shapes,notes,title) in enumerate(slides,1):
  parts[f'ppt/slides/slide{i}.xml']=root('p:sld')+f'<p:cSld><p:bg><p:bgPr><a:solidFill><a:srgbClr val="{BG}"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree>'+GROUP+shapes+'</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>'
- parts[f'ppt/slides/_rels/slide{i}.xml.rels']=rels([('rId1','slideLayout','../slideLayouts/slideLayout1.xml'),('rId2','notesSlide',f'../notesSlides/notesSlide{i}.xml')]+([(f'rIdChart{ {3:1,5:2,6:3,7:4}[i]}','chart',f'../charts/chart{ {3:1,5:2,6:3,7:4}[i]}.xml')] if i in (3,5,6,7) else []))
+ parts[f'ppt/slides/_rels/slide{i}.xml.rels']=rels([('rId1','slideLayout','../slideLayouts/slideLayout1.xml'),('rId2','notesSlide',f'../notesSlides/notesSlide{i}.xml')]+([(f'rIdChart{slide_charts[i]}','chart',f'../charts/chart{slide_charts[i]}.xml')] if i in slide_charts else []))
  note=box(2,notes,0,0,7,9,12).replace('<p:nvPr/>','<p:nvPr><p:ph type="body" idx="1"/></p:nvPr>')
  parts[f'ppt/notesSlides/notesSlide{i}.xml']=root('p:notes')+'<p:cSld><p:spTree>'+GROUP+note+'</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>'
  parts[f'ppt/notesSlides/_rels/notesSlide{i}.xml.rels']=rels([('rId1','slide',f'../slides/slide{i}.xml')])
@@ -156,10 +216,10 @@ for index,(kind,categories,series,axis_title) in enumerate(chart_specs,1):
  parts[f'ppt/charts/chart{index}.xml']=chart_xml(kind,categories,series,axis_title,index)
  parts[f'ppt/charts/_rels/chart{index}.xml.rels']=rels([('rId1','package',f'../embeddings/chart{index}.xlsx')])
  parts[f'ppt/embeddings/chart{index}.xlsx']=workbook(categories,series)
-ct={'ppt/presentation.xml':'presentation.main','ppt/slideMasters/slideMaster1.xml':'slideMaster','ppt/slideLayouts/slideLayout1.xml':'slideLayout',**{f'ppt/slides/slide{i}.xml':'slide' for i in range(1,8)},**{f'ppt/notesSlides/notesSlide{i}.xml':'notesSlide' for i in range(1,8)}}
+ct={'ppt/presentation.xml':'presentation.main','ppt/slideMasters/slideMaster1.xml':'slideMaster','ppt/slideLayouts/slideLayout1.xml':'slideLayout',**{f'ppt/slides/slide{i}.xml':'slide' for i in range(1,len(slides)+1)},**{f'ppt/notesSlides/notesSlide{i}.xml':'notesSlide' for i in range(1,len(slides)+1)}}
 parts['[Content_Types].xml']='<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/>'+''.join(f'<Override PartName="/{k}" ContentType="application/vnd.openxmlformats-officedocument.presentationml.{v}+xml"/>' for k,v in ct.items())+'<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/></Types>'
 parts['[Content_Types].xml']=parts['[Content_Types].xml'].replace('</Types>','<Default Extension="xlsx" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>'+''.join(f'<Override PartName="/ppt/charts/chart{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>' for i in range(1,len(chart_specs)+1))+'</Types>')
 with zipfile.ZipFile(ROOT/'Yellowstone_Findings.pptx','w',zipfile.ZIP_DEFLATED) as z:
  for name,value in parts.items():z.writestr(name,value if isinstance(value,bytes) else '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+value)
 (ROOT/'speaker_notes.md').write_text('\n\n'.join(f'## {i}. {title}\n\n{notes}' for i,(_,notes,title) in enumerate(slides,1)))
-print('Created 7-slide editable deck with four data-linked native charts and speaker notes.')
+print('Created 10-slide editable deck with four data-linked native charts and speaker notes.')
