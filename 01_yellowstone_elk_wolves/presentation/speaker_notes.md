@@ -5,7 +5,7 @@ EXPLAIN: Annual observational data contain several competing influences. Surveys
 DATA CAVEAT: Whole-herd coverage in 2020–2021, some historical estimates, wolf/elk geography and climate metadata remain unresolved. Recovered wolf counts for 1996–2000 form a separate scenario.
 TRANSITION: First define the outcome and the competing models. Sources: reports/CONCLUSIONS.md and HANDOFF.md.
 
-## 2. Models considered: growth, drivers and memory
+## 2. Models considered: growth and its drivers
 
 OPEN: We model proportional annual change, not just the raw number of elk.
 EXAMPLE: A fall from 10,000 to 9,000 gives log(0.9) = −0.1054, which is an exact 10% decline. A preceding increase of ten wolves makes x equal to one.
@@ -54,7 +54,7 @@ LIMIT: Random-noise separation does not identify unknown sightability, changing 
 
 ## 8. Hunting definitions change the removals comparison
 
-OPEN: This is a descriptive comparison of estimated removals, not a direct test of which mechanism matters more for population growth.
+OPEN: The graph compares elk removals; the adjacent tests ask whether hunting predicts annual elk growth. H₀ in each test: the harvest coefficient is zero conditional on the predictors in that model. Hunting-only p=0.324; full-model p=0.501; joint wolf–harvest p=0.907. These are different specifications, not repeated tests of an identical model. The first two estimates are negative; the joint estimate is slightly positive. None establishes no ecological effect. Totals are 12,512 estimated wolf kills and 11,653 published hunting removals. In the joint model the wolf coefficient has p=0.145, H₀: wolf coefficient=0.
 SOURCE: Eberhardt et al. (2007), Table 1, printed page 598, DOI 10.2193/2005-770. The published hunting values match late hunt in all nine years. The broader project harvest series adds fall hunting, including estimated fall components for 1998–2004.
 EXPLAIN: That definition changes the crossover from 2000 to 2001. Neither comparison supplies the age-specific reproductive impact of the removals.
 CAVEATS: Annual wolf-kill confidence intervals are unavailable in the source table. The separate 26% adjustment concerns prime adult classes and is not total kills. Additive mortality increases deaths; compensatory mortality partly replaces other deaths. These totals cannot settle that distinction. Source: q6_removals_comparison.csv.
@@ -63,7 +63,7 @@ CAVEATS: Annual wolf-kill confidence intervals are unavailable in the source tab
 
 OPEN: These models ask what paths are possible if the fitted dynamics continue. They are scenarios, not management forecasts.
 GBM: μ is average log growth, σ is volatility, and B is Brownian motion. Estimates are μ=−0.0157 and σ=0.1790 from 27 eligible adjacent transitions. The population-scale drift would be μ + σ²/2.
-GOMPERTZ: Density dependence can make log abundance return toward an equilibrium when 0<φ<1. Here φ=0.9973 and bootstrap LR p=0.986 provide little support over a random walk.
+GOMPERTZ: Density dependence can make log abundance return toward an equilibrium when 0<φ<1. Here φ=0.9973 and bootstrap LR p=0.986 (H₀: φ=1, random walk with drift; no mean reversion) provide little support over a random walk.
 GRAPH: Annual checks miss crossings between years. A count may fall below 4,000 and recover before year ten, so first passage differs from endpoint probability. Brownian-bridge simulation checks the continuous result.
 UNCERTAINTY: The 6.9%–78.7% interval is parameter uncertainty conditional on GBM, not all ecological or survey uncertainty. Future interventions and systematic bias are omitted. Source: q7_parameters.csv and q7_threshold_probabilities.csv.
 
@@ -71,6 +71,6 @@ UNCERTAINTY: The 6.9%–78.7% interval is parameter uncertainty conditional on G
 
 OPEN: We rerun both systems with the same shared specification, rather than comparing coefficients from different models.
 DIFFERENCE: This model uses lagged wolf levels and prey density. The original Yellowstone headline uses lagged wolf changes. The comparison VAR uses prey and wolf log growth, whereas the original Yellowstone VAR uses prey log growth and scaled wolf-number changes. Thus their p-values are not interchangeable.
-RESULT: On identical 22 test years, MAPE gain is −5.31% in Yellowstone and +8.21% in Isle Royale. Common-window wolf-to-prey Granger p-values are 0.530 and 0.009. The strict observed-input sensitivity has only seven common forecast years.
+RESULT: On identical 22 test years, MAPE gain is −5.31% in Yellowstone and +8.21% in Isle Royale. H₀ for each Granger test: all lagged wolf-growth coefficients in the prey-growth equation equal zero. Common-window wolf-to-prey Granger p-values are 0.530 and 0.009. The strict observed-input sensitivity has only seven common forecast years.
 CLOSE: The Yellowstone data do not establish a clear independent wolf effect, and the forecast gain in the original specification is small. Isle Royale provides clearer predictive evidence under shared models. This neither disproves wolf biology in Yellowstone nor proves a causal difference between ecosystems.
 LIMITS: Reconstructed moose counts, survey timing, geography and ecological regimes differ. Remaining kill-rate observations are unavailable. The two systems’ viability probabilities refer to different events and should not be directly ranked. Sources: 05_synthesis/report/COMPARISON.md and its tables.
