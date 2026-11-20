@@ -6,10 +6,12 @@ The **bottom-up and water side** of the trophic-cascade debate. If wolves helped
 
 | Notebook | Question | Methods |
 |---|---|---|
-| `12_snow_river.ipynb` | Have snowmelt and the river's spring peak moved earlier? Does the snowpack set the river's timing? Can monthly flow be forecast? How volatile is the river, and how extreme was the June 2022 flood? | Water-year features (centre of timing, peak date, 7-day low flow), Mann–Kendall with Hamed–Rao correction and Sen's slope, STL, degree-day snowmelt ODE, SARIMA with rolling-origin evaluation, AR/OU half-life, ARCH LM, GARCH/EGARCH, GEV and Gumbel return periods |
-| `11_vegetation_riverside.ipynb` | Did riverside vegetation get greener than slopes after 1995? Does it track summer water or elk? Does spring green-up follow snowmelt? What did the 2022 flood do? | Riverside − slope paired NDVI difference, sensor-era check, intervention regression (step + ramp at 1995, HAC errors), Bayesian-information break search, STL, pooled regression on low flow, elk and bison, double-logistic green-up fits |
+| `12_snow_river.ipynb` | Have snowmelt and the river's spring peak moved earlier? Does the snowpack set the river's timing? Can monthly flow be forecast? How volatile is the river, and how extreme was the June 2022 flood? | Water-year features (centre of timing, peak date, 7-day low flow), Mann–Kendall with Hamed–Rao correction and Sen's slope, STL, VAR Granger causality (snow → river), degree-day snowmelt ODE, SARIMA chosen by BIC among models with white-noise residuals, rolling-origin evaluation, AR/OU half-life, ARCH LM, GARCH/EGARCH, GEV and Gumbel return periods |
+| `11_vegetation_riverside.ipynb` | Did riverside vegetation get greener than slopes after 1995? Does it track summer water or elk? Does spring green-up follow snowmelt? What did the 2022 flood do? | Riverside − slope paired NDVI difference, sensor-era check, intervention regression (step + ramp at 1995, HAC errors), Bayesian-information break search, STL, pooled regression on low flow, elk and bison, Granger causality (pairwise and four-variable VAR), double-logistic green-up fits |
 
 **Run 12 before 11**: notebook 12 writes `data/processed/river_annual_features.csv`, which notebook 11 reads.
+
+Every regression and time-series model (intervention, water vs elk, snow → river, VAR, SARIMA, degree-day, GARCH) has a **residual check**: Ljung–Box for autocorrelation and ARCH LM for changing variance (Portmanteau for VARs), with the results tabled in `reports/tables/` and fixes applied where a model failed.
 
 ## Folder layout
 

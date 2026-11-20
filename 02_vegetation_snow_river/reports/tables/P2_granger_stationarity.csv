@@ -1,0 +1,7 @@
+series,ADF p (levels),KPSS p (levels),ADF p (diff),KPSS p (diff),used in Granger
+"veg diff, Lamar",0.0,0.1,0.0,0.1,levels
+"veg diff, Soda Butte",0.009,0.019,0.0,0.1,first difference
+"veg diff, Blacktail",0.885,0.012,0.0,0.1,first difference
+lowflow,0.0,0.1,0.0,0.092,levels
+log_elk,0.622,0.01,0.0,0.1,first difference
+log_bison,0.939,0.01,0.0,0.1,first difference

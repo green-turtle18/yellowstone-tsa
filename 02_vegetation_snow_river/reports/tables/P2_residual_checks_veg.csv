@@ -1,0 +1,28 @@
+model,stream,n,Ljung–Box p lag 5,Ljung–Box p lag 10,ARCH p,white noise (all p > 0.05)
+intervention (step + ramp at 1995),Lamar,43,0.706,0.949,0.665,True
+intervention + 2013 sensor dummy,Lamar,43,0.672,0.937,0.654,True
+intervention (step + ramp at 1995),Soda Butte,43,0.034,0.111,0.277,False
+intervention + 2013 sensor dummy,Soda Butte,43,0.029,0.107,0.25,False
+intervention (step + ramp at 1995),Blacktail,42,0.154,0.227,0.793,True
+intervention + 2013 sensor dummy,Blacktail,42,0.162,0.233,0.796,True
+"intervention, pooled",Blacktail,42,0.0,0.0,0.004,False
+"intervention, pooled",Lamar,43,0.846,0.975,0.61,True
+"intervention, pooled",Soda Butte,43,0.027,0.179,0.233,False
+"water vs elk: levels, all years",Blacktail,41,0.0,0.0,0.173,False
+"water vs elk: levels, all years",Lamar,42,0.737,0.889,0.807,True
+"water vs elk: levels, all years",Soda Butte,42,0.005,0.04,0.091,False
+"water vs elk: levels, real elk counts only",Blacktail,34,0.0,0.0,0.547,False
+"water vs elk: levels, real elk counts only",Lamar,34,0.474,0.789,0.771,True
+"water vs elk: levels, real elk counts only",Soda Butte,34,0.262,0.299,0.497,True
+"water vs elk: levels, water only",Blacktail,41,0.012,0.003,0.186,False
+"water vs elk: levels, water only",Lamar,42,0.346,0.819,0.753,True
+"water vs elk: levels, water only",Soda Butte,42,0.0,0.0,0.055,False
+"water vs elk: levels, elk only",Blacktail,41,0.0,0.0,0.444,False
+"water vs elk: levels, elk only",Lamar,42,0.866,0.783,0.68,True
+"water vs elk: levels, elk only",Soda Butte,42,0.009,0.084,0.171,False
+water vs elk: first differences,Blacktail,40,0.081,0.178,0.11,True
+water vs elk: first differences,Lamar,41,0.63,0.951,0.306,True
+water vs elk: first differences,Soda Butte,41,0.157,0.139,0.338,True
+"water vs elk, one stream",Lamar,42,0.734,0.874,0.899,True
+"water vs elk, one stream",Soda Butte,42,0.204,0.206,0.412,True
+"water vs elk, one stream",Blacktail,41,0.594,0.709,0.891,True

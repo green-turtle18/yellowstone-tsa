@@ -1,0 +1,19 @@
+stream,direction,lag 1 p,lag 2 p,n
+Lamar,summer low flow → veg,0.72,0.973,43
+Lamar,veg → summer low flow,0.698,0.76,43
+Lamar,log elk → veg,0.203,0.519,41
+Lamar,veg → log elk,0.151,0.105,41
+Lamar,log bison → veg,0.874,0.789,41
+Lamar,veg → log bison,0.651,0.058,41
+Soda Butte,summer low flow → veg,0.843,0.68,42
+Soda Butte,veg → summer low flow,0.396,0.55,42
+Soda Butte,log elk → veg,0.563,0.311,41
+Soda Butte,veg → log elk,0.48,0.361,41
+Soda Butte,log bison → veg,0.638,0.415,41
+Soda Butte,veg → log bison,0.39,0.633,41
+Blacktail,summer low flow → veg,0.482,0.262,41
+Blacktail,veg → summer low flow,0.712,0.781,41
+Blacktail,log elk → veg,0.288,0.306,40
+Blacktail,veg → log elk,0.991,0.85,40
+Blacktail,log bison → veg,0.83,0.901,40
+Blacktail,veg → log bison,0.387,0.452,40

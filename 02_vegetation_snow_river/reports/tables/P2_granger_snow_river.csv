@@ -1,0 +1,5 @@
+snow series,river series,VAR lag (BIC),VAR lag used,n,snow → river (Granger) p,river → snow (Granger) p,same-year link (instantaneous) p,"Portmanteau p (residuals, 8 lags)"
+peak SWE (z),log mean flow,1,1,43,0.644,0.996,0.0,0.491
+peak SWE (z),log summer low flow,1,2,42,0.229,0.231,0.0005,0.257
+winter severity,log summer low flow,1,2,42,0.194,0.274,0.0002,0.138
+melt-out anomaly,river centre of timing,1,1,43,0.606,0.578,0.0,0.176

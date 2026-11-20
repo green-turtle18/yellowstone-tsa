@@ -1,0 +1,5 @@
+model,Ljung–Box p (lag 10),largest |ACF| lags 1–10,Ljung–Box p on squares (lag 10),largest |ACF| of squares
+"AR residuals, seasonally scaled (input to all three)",2.5165834558436784e-23,0.049,0.0,0.246
+constant variance (OU assumption),2.5165834558432043e-23,0.049,0.0,0.246
+"GARCH(1,1)",1.7890568064110462e-29,0.024,0.00012173542099844024,0.016
+"EGARCH(1,1) with asymmetry",2.3615270888386456e-25,0.023,7.687734816244557e-06,0.016
