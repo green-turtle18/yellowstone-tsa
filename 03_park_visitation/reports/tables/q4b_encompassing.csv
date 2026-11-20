@@ -1,0 +1,41 @@
+h,model_1,model_2,lam,p
+1,Seasonal naive,ETS,0.9891,0.0
+1,Seasonal naive,Holt–Winters,0.6896,0.0
+1,Seasonal naive,SARIMA,0.9959,0.0
+1,Seasonal naive,SARIMA d=0 + drift,1.0881,0.0
+1,ETS,Seasonal naive,0.0109,0.9541
+1,ETS,Holt–Winters,0.1592,0.251
+1,ETS,SARIMA,0.4485,0.0581
+1,ETS,SARIMA d=0 + drift,0.5236,0.0326
+1,Holt–Winters,Seasonal naive,0.3104,0.0459
+1,Holt–Winters,ETS,0.8408,0.0
+1,Holt–Winters,SARIMA,0.7844,0.0
+1,Holt–Winters,SARIMA d=0 + drift,0.7934,0.0
+1,SARIMA,Seasonal naive,0.0041,0.9797
+1,SARIMA,ETS,0.5515,0.0198
+1,SARIMA,Holt–Winters,0.2156,0.1405
+1,SARIMA,SARIMA d=0 + drift,0.6596,0.0286
+1,SARIMA d=0 + drift,Seasonal naive,-0.0881,0.5735
+1,SARIMA d=0 + drift,ETS,0.4764,0.0518
+1,SARIMA d=0 + drift,Holt–Winters,0.2066,0.1107
+1,SARIMA d=0 + drift,SARIMA,0.3404,0.2585
+12,Seasonal naive,ETS,1.0789,0.0001
+12,Seasonal naive,Holt–Winters,0.8733,0.0096
+12,Seasonal naive,SARIMA,0.9485,0.0
+12,Seasonal naive,SARIMA d=0 + drift,0.9905,0.0
+12,ETS,Seasonal naive,-0.0789,0.767
+12,ETS,Holt–Winters,0.2755,0.412
+12,ETS,SARIMA,0.3977,0.3442
+12,ETS,SARIMA d=0 + drift,0.4984,0.1468
+12,Holt–Winters,Seasonal naive,0.1267,0.707
+12,Holt–Winters,ETS,0.7245,0.0309
+12,Holt–Winters,SARIMA,0.6689,0.0506
+12,Holt–Winters,SARIMA d=0 + drift,0.6691,0.0122
+12,SARIMA,Seasonal naive,0.0515,0.8101
+12,SARIMA,ETS,0.6023,0.1521
+12,SARIMA,Holt–Winters,0.3311,0.3332
+12,SARIMA,SARIMA d=0 + drift,0.596,0.1285
+12,SARIMA d=0 + drift,Seasonal naive,0.0095,0.9674
+12,SARIMA d=0 + drift,ETS,0.5016,0.1443
+12,SARIMA d=0 + drift,Holt–Winters,0.3309,0.215
+12,SARIMA d=0 + drift,SARIMA,0.404,0.3029

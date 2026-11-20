@@ -1,0 +1,13 @@
+error,trend,damped,seasonal,AIC
+mul,,False,mul,8486.2
+mul,add,True,mul,8493.5
+mul,add,False,mul,8511.1
+mul,,False,add,8695.4
+add,add,False,mul,8984.3
+add,,False,mul,8987.8
+add,,False,add,9218.5
+add,add,False,add,9223.5
+add,add,True,add,9224.8
+add,add,True,mul,9694.6
+mul,add,True,add,9907.8
+mul,add,False,add,9927.0

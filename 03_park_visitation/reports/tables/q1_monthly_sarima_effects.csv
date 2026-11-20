@@ -1,0 +1,10 @@
+,version,coef,se,p,% effect,95% CI low %,95% CI high %
+step95_winter,without severity,-0.189,0.094,0.044,-17.183,-31.078,-0.488
+step95_summer,without severity,-0.052,0.254,0.839,-5.023,-42.237,56.166
+count93_winter,without severity,0.273,0.16,0.089,31.354,-4.052,79.827
+snow04_winter,without severity,-0.352,0.136,0.01,-29.646,-46.091,-8.184
+step95_winter,with winter severity,-0.19,0.104,0.068,-17.29,-32.569,1.451
+step95_summer,with winter severity,-0.052,0.255,0.839,-5.059,-42.412,56.523
+count93_winter,with winter severity,0.274,0.16,0.087,31.551,-3.923,80.123
+snow04_winter,with winter severity,-0.351,0.138,0.011,-29.636,-46.316,-7.774
+severity_winter,with winter severity,-0.002,0.03,0.958,-0.161,-5.938,5.972

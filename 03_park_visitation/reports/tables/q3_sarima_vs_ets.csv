@@ -1,0 +1,7 @@
+,worst_drop_pct,worst_drop_pct,visits_lost_first_12m,visits_lost_first_12m,first_12m_gap_pct,first_12m_gap_pct,recovery_month,recovery_month,year2_gap_pct,year2_gap_pct
+,SARIMA,ETS,SARIMA,ETS,SARIMA,ETS,SARIMA,ETS,SARIMA,ETS
+shock,,,,,,,,,,
+1988 fires,-56.2,-39.0,702153.5,156071.8,-23.8,-6.5,Oct 1988,Jul 1988,-19.2,12.2
+COVID 2020,-100.0,-100.0,561384.6,467651.4,-12.8,-10.9,Jun 2020,Jun 2020,6.9,14.1
+2022 flood,-55.1,-54.6,2456723.0,2497984.0,-43.4,-43.8,Oct 2022,Oct 2022,-24.9,-19.7
+2022 flood (pre-COVID baseline),-48.3,-41.7,1558363.8,1077328.4,-32.7,-25.2,Aug 2022,Jun 2022,-7.5,6.9

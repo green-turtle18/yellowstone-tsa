@@ -1,0 +1,4 @@
+model,term,b,p,% per °C
+(a) common slope,Temp_mean_C,0.0296,0.0,3.0072
+(b) + shoulder interaction,Temp_mean_C (non-shoulder),0.0145,0.0589,1.4604
+(b) + shoulder interaction,extra slope in shoulder months,0.0529,0.0,5.429

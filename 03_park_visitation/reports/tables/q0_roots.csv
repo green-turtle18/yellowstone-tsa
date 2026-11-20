@@ -1,0 +1,27 @@
+model,part,root,modulus
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-1.151-0.000i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.996-0.575i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.996+0.575i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.575-0.996i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.575+0.996i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.000-1.151i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),-0.000+1.151i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),+0.575-0.996i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),+0.575+0.996i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),+1.151-0.000i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),+0.996-0.575i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",AR (incl. seasonal),+0.996+0.575i,1.151
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+0.879-0.508i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+0.879+0.508i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+1.015-0.000i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+1.055-0.000i,1.055
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+0.508-0.879i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),+0.508+0.879i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.000-1.015i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.000+1.015i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.508-0.879i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.508+0.879i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.879-0.508i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-0.879+0.508i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-1.015-0.000i,1.015
+"SARIMA(0, 1, 2)(1, 1, 1)",MA (incl. seasonal),-4.301-0.000i,4.301

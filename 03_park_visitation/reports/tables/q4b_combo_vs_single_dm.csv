@@ -1,0 +1,3 @@
+h,best_combo,combo_MASE,best_single,single_MASE,DM,p
+1,Combo: ETS + HW + Seasonal naive,1.139,SARIMA d=0 + drift,1.179,-0.514,0.608
+12,Combo: ETS + Seasonal naive,1.205,Seasonal naive,1.236,-0.444,0.658

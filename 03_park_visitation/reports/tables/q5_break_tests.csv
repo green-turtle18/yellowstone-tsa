@@ -1,0 +1,6 @@
+,first winter of new segment
+PELT pen=0.1,"1999, 2009"
+PELT pen=0.2,"1999, 2009"
+PELT pen=0.5,none
+"BinSeg, 1 break",1999
+"BinSeg, 2 breaks","1999, 2009"

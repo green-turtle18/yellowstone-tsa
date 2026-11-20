@@ -1,0 +1,9 @@
+series,step,trend,omega,p,% effect
+North gate,step96,c,0.012,0.926,1.199
+North gate,step96,ct,-0.119,0.649,-11.206
+North gate,step97,c,0.671,0.04,95.679
+North gate,step97,ct,0.669,0.141,95.166
+North − Hwy 191,step96,c,-0.007,0.962,-0.682
+North − Hwy 191,step96,ct,-0.124,0.51,-11.645
+North − Hwy 191,step97,c,0.655,0.0,92.588
+North − Hwy 191,step97,ct,0.699,0.012,101.102

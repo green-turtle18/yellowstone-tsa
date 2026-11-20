@@ -1,0 +1,29 @@
+Did wolves bring tourists? Not in a way that shows up in park-wide visitor counts. Winter visits
+(Dec–Mar), which the brief proposed as a proxy for wolf watching, did not rise after wolves were
+released. A step at the first wolf winter (1995–96) is -15% (95% CI -50% to
++44%, p = 0.54); adding controls for NPS's 1993 switch to traffic-counter
+estimates, the 2004 snowmobile rules and winter severity, a gradual 1995–2000 ramp, a sample
+ending in 2002, or modelling winter minus summer all give negative, non-significant estimates
+(between -22% and -14%, all p > 0.43).
+The monthly SARIMA, which uses all 564 months and is the most precise test, points the same
+way: winter months after 1996 are 17% below the pre-wolf pattern (p = 0.04), or
+17% below (p = 0.07) with winter severity added. Its 95% interval (-33% to
++1.5%) rules out a park-wide winter increase of more than about 1.5%; the
+annual models are much less precise. Summer visits, the control, show no change either
+(-8%, p = 0.25). The likely reason is that park-wide winter visits are dominated by
+snowmobile and snowcoach trips from West Yellowstone to Old Faithful, far from wolf country;
+their ups and downs follow snowmobile rules (−30% after 2004) and snow, not wolves, and
+the early-1990s rise coincides with the 1993 counting change.
+A narrower measure points the other way. Winter cars through the North gate, the only road
+open in winter and the route into Lamar Valley, doubled between the 1995–96 and 1996–97
+winters and since then have moved with the size of the wolf population: an elasticity of
+about 0.3 (10% more wolves, about 3% more winter cars), with p-values from
+0.02 to 0.27 depending on the model. That link is suggestive, not proven: a placebo
+regression of summer visits on wolf numbers also comes out 'significant', a reminder of how
+easily two trending yearly series correlate. Duffield, Neher & Patterson (2006) estimated that
+wolf-related visitor spending is worth about $35.5M a year to nearby towns. Their figure measures
+spending by visitors who came partly to see wolves, not extra visits to the park, so it is not
+contradicted by our result: wolf watchers who would have visited anyway, or who come in
+summer, add spending without adding to winter counts, and any extra winter trips would be
+concentrated on the northern range, a small part of winter visits, which is where the
+North-gate data hint at an effect.

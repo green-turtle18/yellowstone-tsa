@@ -1,0 +1,5 @@
+shock,shock_month,worst_month,worst_drop_pct,visits_lost_to_recovery,visits_lost_first_12m,recovery_month,recovery_months,rebound_12m_after,first_12m_gap_pct,year2_gap_pct,immediate %,delta,delta_CI,half_life_months
+1988 fires,Jul 1988,Sep 1988,-56.2,665604.4,702153.5,Oct 1988,3,-499361.5,-23.8,-19.2,-29.3,0.5,0.00–0.95,1.0
+COVID 2020,Mar 2020,Apr 2020,-100.0,416462.9,561384.6,Jun 2020,3,-71857.9,-12.8,6.9,-89.7,0.2,0.10–0.30,0.4
+2022 flood,Jun 2022,Jul 2022,-55.1,2263468.6,2456723.0,Oct 2022,4,-1600643.1,-43.4,-24.9,-48.6,0.8,0.60–0.95,3.1
+2022 flood (pre-COVID baseline),Jun 2022,Jul 2022,-48.3,952754.8,1558363.8,Aug 2022,2,-942457.7,-32.7,-7.5,,,,

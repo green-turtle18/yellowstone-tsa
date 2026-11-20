@@ -1,0 +1,4 @@
+series,ADF stat,ADF p,KPSS stat,KPSS p
+log V,-1.319,0.62,0.396,0.079
+Δ12 log V,-7.939,0.0,0.056,0.1
+Δ1Δ12 log V,-9.847,0.0,0.016,0.1

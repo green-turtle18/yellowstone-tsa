@@ -1,0 +1,5 @@
+model,elasticity_AR1,p_AR1,elasticity_OLS_HAC,p_OLS_HAC,R2_OLS
+wolves only,0.31,0.048,0.271,0.113,0.132
++ Hwy 191 control,0.301,0.09,0.319,0.122,0.222
++ Hwy 191 + trend,0.302,0.268,0.304,0.018,0.407
+PLACEBO: summer park visits,,,-0.126,0.0,0.719

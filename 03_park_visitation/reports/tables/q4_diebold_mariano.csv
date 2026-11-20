@@ -1,0 +1,3 @@
+h,best,second,DM,p
+1,SARIMA d=0 + drift,Holt–Winters,-0.716,0.476
+12,Seasonal naive,ETS,-0.737,0.463

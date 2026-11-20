@@ -1,0 +1,8 @@
+model,effect,omega,se,p,% effect,95% CI low %,95% CI high %,n,AIC,controls
+"Winter, step only",step95,-0.163,0.268,0.543,-15.045,-49.787,43.737,46,-62.795,
+"Winter, step + 1993 count change",step95,-0.177,0.295,0.55,-16.183,-52.998,49.466,46,-63.432,count93
+"Winter, full controls",step95,-0.251,0.642,0.696,-22.212,-77.911,173.936,46,-68.133,"count93, snow04, severity, shut96"
+"Winter, full controls, ramp 1995–2000",ramp95,-0.255,0.322,0.429,-22.477,-58.763,45.74,46,-66.531,"count93, snow04, severity, shut96"
+"Winter, ends 2002 (pre-snowmobile rules)",step95,-0.186,0.263,0.481,-16.933,-50.431,39.201,23,-24.885,"count93, severity, shut96"
+"Summer control, full controls",step95,-0.087,0.075,0.246,-8.298,-20.772,6.139,46,-112.711,"count93, snow04, covid20, flood22"
+"Winter − summer, full controls",step95,-0.15,0.3,0.617,-13.925,-52.203,55.01,46,-46.858,"count93, snow04, severity, shut96, covid20, flood22"

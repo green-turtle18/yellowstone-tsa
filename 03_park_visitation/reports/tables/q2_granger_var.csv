@@ -1,0 +1,5 @@
+lags,temp → visits F,temp → visits p,visits → temp (placebo) p,instantaneous p,"Ljung–Box p, temp resid","Ljung–Box p, visits resid",joint whiteness p (36 lags),residuals white,stable
+1,1.3779,0.2408,0.512,0.0,0.0,0.0,0.0,False,True
+2,1.4053,0.2459,0.5144,0.0,0.0,0.0,0.0,False,True
+13,0.46,0.9461,0.7055,0.0,0.0001,0.0209,0.0,False,True
+24,1.208,0.2259,0.2463,0.0,0.8144,0.6016,0.0,True,True

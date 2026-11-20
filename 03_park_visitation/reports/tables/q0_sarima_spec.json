@@ -1,0 +1,22 @@
+{
+  "order": [
+    0,
+    1,
+    2
+  ],
+  "seasonal_order": [
+    1,
+    1,
+    1,
+    12
+  ],
+  "exog": [
+    "D_fire88",
+    "D_covid20",
+    "D_flood22",
+    "D_shutdown",
+    "C_count93",
+    "C_count13"
+  ],
+  "note": "log visits; chosen by BIC subject to Ljung-Box(24) p>0.05 in notebook 13"
+}
