@@ -1,0 +1,4 @@
+pair,breaks chosen by BIC,first year of each new segment,segment means
+Lamar,0,[],[np.float64(-0.045)]
+Soda Butte,1,[1997],"[np.float64(-0.04), np.float64(-0.11)]"
+Blacktail,1,[2007],"[np.float64(0.05), np.float64(0.087)]"

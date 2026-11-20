@@ -1,0 +1,10 @@
+series,years,n,Sen slope per decade,MK p,MK p (autocorr-corrected),direction
+Lamar: 1984–2026,1984–2026,43,-0.0136,0.018,0.018,decreasing
+Lamar: 1984–1994,1984–1994,11,-0.029,0.5334,,no trend
+Lamar: 1996–2026,1996–2026,31,0.0077,0.2767,0.2767,no trend
+Soda Butte: 1984–2026,1984–2026,43,-0.0273,0.0009,0.0091,decreasing
+Soda Butte: 1984–1994,1984–1994,11,-0.0072,0.8763,0.8763,no trend
+Soda Butte: 1996–2026,1996–2026,31,-0.0157,0.3242,0.3242,no trend
+Blacktail: 1984–2026,1985–2026,42,0.0176,0.0,0.0,increasing
+Blacktail: 1984–1994,1985–1994,10,-0.0087,0.5915,0.5915,no trend
+Blacktail: 1996–2026,1996–2026,31,0.0255,0.0,0.0,increasing

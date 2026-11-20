@@ -1,0 +1,13 @@
+pair,term,coef,CI low,CI high,p,n
+Lamar,pre-1995 trend / yr,0.0049,-0.0063,0.0162,0.391,43
+Lamar,step at 1995,-0.0661,-0.1271,-0.0051,0.034,43
+Lamar,change in trend after 1995 / yr,-0.0052,-0.0166,0.0061,0.368,43
+Soda Butte,pre-1995 trend / yr,-0.0005,-0.0069,0.0058,0.869,43
+Soda Butte,step at 1995,-0.0299,-0.1036,0.0438,0.427,43
+Soda Butte,change in trend after 1995 / yr,-0.0012,-0.0078,0.0053,0.709,43
+Blacktail,pre-1995 trend / yr,-0.0016,-0.0077,0.0046,0.611,42
+Blacktail,step at 1995,-0.014,-0.0561,0.0281,0.514,42
+Blacktail,change in trend after 1995 / yr,0.004,-0.0022,0.0102,0.21,42
+pooled (pair effects),pre-1995 trend / yr,0.0006,-0.0059,0.0071,0.856,128
+pooled (pair effects),step at 1995,-0.0354,-0.0827,0.012,0.143,128
+pooled (pair effects),change in trend after 1995 / yr,-0.0005,-0.007,0.006,0.879,128

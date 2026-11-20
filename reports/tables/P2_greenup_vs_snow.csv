@@ -1,0 +1,3 @@
+predictor,days of green-up per day,CI,p,R2,n
+snow melt-out anomaly (days),0.54,0.28 to 0.80,0.0001,0.27,37
+river centre of timing (day of WY),0.88,0.58 to 1.17,0.0,0.45,37
