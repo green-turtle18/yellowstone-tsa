@@ -1,18 +1,19 @@
 # Part 5 · Synthesis
 
-**Status:** to be done once Parts 1–4 are final.
+The Yellowstone–Isle Royale population time-series comparison is complete for the supplied data. The broader synthesis of Parts 2 and 3 remains separate work.
 
-This folder will hold the work that combines the parts:
+- [Comparison report and drawbacks](report/COMPARISON.md)
+- [Main comparison table](reports/tables/native_windows_comparison.csv)
+- [Common-window and observed-input results](reports/tables/comparison_summary.csv)
+- [Forecasts scored on identical years](reports/tables/matched_calendar_forecast_scores.csv)
+- [Wolf-effect graph](reports/figures/wolf_effect_comparison.png)
+- [Forecast graph](reports/figures/forecast_comparison.png)
 
-- **Comparison table, Yellowstone vs Isle Royale.** The same model settings (`../04_isle_royale/scripts/tsa_spec.py`) run on both systems. Columns come from `../01_yellowstone_elk_wolves/` and `../04_isle_royale/reports/tables/IR_comparison_column.csv`.
-- **Final report**, answering each research question in the main README: what the evidence supports and what it cannot establish.
-- **Presentation slides.**
+From the repository root:
 
-Planned layout:
-
-```text
-05_synthesis/
-├── notebooks/   comparison notebook
-├── report/      final report
-└── slides/
+```sh
+python 05_synthesis/scripts/build_comparison.py
+python -m unittest discover -s 05_synthesis/tests -v
 ```
+
+The script imports Part 4's unchanged shared specification. It does not overwrite source data or Part 4's results. Part 1's original change-in-wolves analysis remains available and addresses a different predictor. The current shared comparison uses lagged wolf levels.

@@ -29,6 +29,6 @@
   "unit_tests": 10,
   "status": "passed",
   "command": "python scripts/run_all.py",
-  "checked_at": "2026-11-19T19:31:24.992791+00:00",
+  "checked_at": "2026-11-20T10:25:01.768052+00:00",
   "scope": "Notebook execution checked here; run_all invokes this only after its tests pass."
 }

@@ -12,9 +12,10 @@ def main():
         (ROOT/'supplements/q6_removals/q6_completion_handoff.zip', ROOT/'supplements/q6_removals'),
     ]:
         with zipfile.ZipFile(archive) as old:
-            names = [n for n in old.namelist() if not n.endswith('/')]
+            names = [n for n in old.namelist() if not n.endswith('/')
+                     and not any(part in {'.ipynb_checkpoints', '__pycache__', '.DS_Store'} for part in Path(n).parts)]
         if base == ROOT:
-            names = sorted(set(names) | {'scripts/refresh_handoffs.py'})
+            names = sorted(set(names) | {'scripts/refresh_handoffs.py', 'scripts/validate_presentation.py'})
         for name in names:
             source = (base/name).resolve()
             if not source.is_relative_to(base.resolve()) or not source.is_file():

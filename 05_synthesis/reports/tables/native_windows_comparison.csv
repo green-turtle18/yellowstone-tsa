@@ -1,0 +1,11 @@
+,Yellowstone,Isle Royale
+system,Yellowstone,Isle Royale
+years (prey growth),1985–2025 (n=41),1960–2015 (n=56)
+"wolf effect alone, % prey growth per +10 wolves [95% CI]","-0.6 [-2.8, +1.6], p=0.609","-6.4 [-16.5, +3.7], p=0.214"
+"wolf effect with density, % per +10 wolves [95% CI]","-1.6 [-3.9, +0.7], p=0.175","-8.0 [-16.0, -0.1], p=0.047"
+"wolf effect with density, % per +1 SD of wolves",-4.7,-7.4
+"Granger p, wolves → prey (VAR(1))",0.142,0.011
+"Granger p, prey → wolves (VAR(1))",0.588,0.182
+"forecast MAPE gain over drift, ARIMAX wolves (%)",-2.5,+6.2
+"drift of log prey (mean growth, %/yr)",-1.98,1.51
+"volatility of log prey (SD of growth, %)",16.7,19.2

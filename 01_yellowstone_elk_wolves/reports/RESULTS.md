@@ -1,6 +1,6 @@
 # Person 1 results — provisional, 19 November 2026
 
-All seven questions and the observation-error extension have executable implementations. Q0 is only partly resolved: 2020–2021 whole-herd survey provenance, climate export metadata, and several historical values remain outstanding. Q6's descriptive wolf-kill comparison is complete; the full Isle Royale comparison still requires team inputs. See HANDOFF.md for precise requests.
+All seven questions and the observation-error extension have executable implementations. Q0 is only partly resolved: 2020–2021 whole-herd survey provenance, climate export metadata, and several historical values remain outstanding. Q6's descriptive wolf-kill comparison is complete; the population time-series comparison is in ../../05_synthesis/report/COMPARISON.md. The legacy person4_comparison.csv remains a historical template for a different wolf-change specification. See HANDOFF.md for precise requests.
 
 ## Findings from the current run
 
