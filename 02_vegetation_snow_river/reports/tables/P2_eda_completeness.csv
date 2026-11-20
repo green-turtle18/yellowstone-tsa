@@ -1,0 +1,7 @@
+dataset,period used,records,missing,notes
+River flow (USGS 06191500),WY 1911–2026,42369,0,"water years 1895–1910 missing in source; 794 estimated, 169 provisional days"
+SNOTEL Northeast Entrance: snow water equivalent,1966-10-01 to 2026-11-09,21955,0,temperature missing on 6478 days
+SNOTEL Canyon: snow water equivalent,1980-10-01 to 2026-11-09,16841,6,temperature missing on 4778 days
+SNOTEL Parker Peak: snow water equivalent,1980-07-23 to 2026-11-09,16911,365,temperature missing on 2125 days
+NDVI Lamar + Soda Butte (4 polygons),1984-05-08 to 2026-11-04,1003,404,"missing = partial rows (cloud-masked polygons), dropped"
+NDVI Blacktail (2 polygons),1984-05-08 to 2026-11-04,692,102,plus 0 values outside −0.2 to 0.95 dropped across both files

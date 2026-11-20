@@ -1,0 +1,43 @@
+series,n,verdict
+log annual mean flow,116,stationary
+Δ log annual mean flow,115,stationary
+log annual peak flow,116,stationary
+Δ log annual peak flow,115,unclear (tests disagree)
+centre of timing,116,unclear (tests disagree)
+Δ centre of timing,115,stationary
+log 7-day summer low flow,116,stationary
+Δ log 7-day summer low flow,115,stationary
+log monthly flow,1392,stationary
+Δ12 log monthly flow,1380,stationary
+log monthly flow minus monthly mean,1392,stationary
+daily log-flow anomaly (last 10 years),3650,unclear (tests disagree)
+winter severity index (1982–),45,stationary
+Δ winter severity index (1982–),44,stationary
+melt-out anomaly (1982–),45,stationary
+Δ melt-out anomaly (1982–),44,stationary
+peak SWE Northeast Entrance (1967–),60,trend-stationary
+Δ peak SWE Northeast Entrance (1967–),59,stationary
+peak SWE Canyon,46,stationary
+Δ peak SWE Canyon,45,stationary
+peak SWE Parker Peak,45,stationary
+Δ peak SWE Parker Peak,44,stationary
+monthly temperature,511,stationary
+monthly temperature anomaly,511,unclear (tests disagree)
+Lamar riverside,43,stationary
+Δ Lamar riverside,42,stationary
+Lamar slope,43,stationary
+Δ Lamar slope,42,stationary
+Lamar diff,43,stationary
+Δ Lamar diff,42,stationary
+Soda Butte riverside,43,trend-stationary
+Δ Soda Butte riverside,42,stationary
+Soda Butte slope,43,stationary
+Δ Soda Butte slope,42,stationary
+Soda Butte diff,43,trend-stationary
+Δ Soda Butte diff,42,stationary
+Blacktail riverside,42,stationary
+Δ Blacktail riverside,41,unclear (tests disagree)
+Blacktail slope,42,stationary
+Δ Blacktail slope,41,stationary
+Blacktail diff,42,trend-stationary
+Δ Blacktail diff,41,stationary

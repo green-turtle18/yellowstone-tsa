@@ -6,10 +6,11 @@ The **bottom-up and water side** of the trophic-cascade debate. If wolves helped
 
 | Notebook | Question | Methods |
 |---|---|---|
+| `07_eda_snow_river_vegetation.ipynb` | What do the river, snow and vegetation data look like before any modelling? | Completeness, summary statistics, distributions, time plots, smoothing, STL, ADF/KPSS stationarity (levels and differences), ACF/PACF, ARMA identification, agreement between snow stations, correlations in levels and differences |
 | `12_snow_river.ipynb` | Have snowmelt and the river's spring peak moved earlier? Does the snowpack set the river's timing? Can monthly flow be forecast? How volatile is the river, and how extreme was the June 2022 flood? | Water-year features (centre of timing, peak date, 7-day low flow), Mann–Kendall with Hamed–Rao correction and Sen's slope, STL, VAR Granger causality (snow → river), degree-day snowmelt ODE, SARIMA chosen by BIC among models with white-noise residuals, rolling-origin evaluation, AR/OU half-life, ARCH LM, GARCH/EGARCH, GEV and Gumbel return periods |
 | `11_vegetation_riverside.ipynb` | Did riverside vegetation get greener than slopes after 1995? Does it track summer water or elk? Does spring green-up follow snowmelt? What did the 2022 flood do? | Riverside − slope paired NDVI difference, sensor-era check, intervention regression (step + ramp at 1995, HAC errors), Bayesian-information break search, STL, pooled regression on low flow, elk and bison, Granger causality (pairwise and four-variable VAR), double-logistic green-up fits |
 
-**Run 12 before 11**: notebook 12 writes `data/processed/river_annual_features.csv`, which notebook 11 reads.
+**Run order: 07 → 12 → 11.** Notebook 07 is exploratory and writes nothing the others need; notebook 12 writes `data/processed/river_annual_features.csv`, which notebook 11 reads.
 
 Every regression and time-series model (intervention, water vs elk, snow → river, VAR, SARIMA, degree-day, GARCH) has a **residual check**: Ljung–Box for autocorrelation and ARCH LM for changing variance (Portmanteau for VARs), with the results tabled in `reports/tables/` and fixes applied where a model failed.
 
@@ -30,7 +31,7 @@ Every regression and time-series model (intervention, water vs elk, snow → riv
 │       └── ndvi_annual_peak_summer.csv
 ├── scripts/
 │   └── build_severity_index.py   builds the two SNOTEL products above
-├── notebooks/   11, 12
+├── notebooks/   07, 11, 12
 └── reports/
     ├── figures/   P2_*.png
     └── tables/    P2_*.csv
@@ -44,7 +45,7 @@ From this folder:
 python scripts/build_severity_index.py data/raw/snotel_northeast_entrance.csv data/raw/snotel_canyon.csv data/raw/snotel_parker_peak.csv
 ```
 
-(only needed if a SNOTEL file changes), then open `notebooks/` and run **12 → 11**. Notebook 11 also reads Part 1's corrected master file from `../01_yellowstone_elk_wolves/data/processed/`, so keep the folders side by side.
+(only needed if a SNOTEL file changes), then open `notebooks/` and run **07 → 12 → 11**. Notebook 11 also reads Part 1's corrected master file from `../01_yellowstone_elk_wolves/data/processed/`, so keep the folders side by side.
 
 ## Data notes
 

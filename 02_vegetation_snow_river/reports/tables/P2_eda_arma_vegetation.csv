@@ -1,0 +1,19 @@
+series,model,AIC,BIC,largest term p,all terms significant,Ljung–Box p,white-noise residuals,chosen
+Lamar riverside − slope,"ARMA(0,0)",-134.1,-130.6,0.0,True,0.855,True,True
+Lamar riverside − slope,"ARMA(1,0)",-135.0,-129.7,0.07,False,0.965,True,False
+Lamar riverside − slope,"ARMA(2,0)",-133.1,-126.1,0.741,False,0.974,True,False
+Lamar riverside − slope,"ARMA(0,1)",-134.4,-129.1,0.228,False,0.939,True,False
+Lamar riverside − slope,"ARMA(0,2)",-133.7,-126.6,0.188,False,0.982,True,False
+Lamar riverside − slope,"ARMA(1,1)",-133.0,-126.0,0.892,False,0.955,True,False
+Δ Soda Butte riverside − slope,"ARMA(0,0)",-124.0,-120.5,0.0,True,0.204,True,True
+Δ Soda Butte riverside − slope,"ARMA(1,0)",-122.2,-117.0,0.77,False,0.116,True,False
+Δ Soda Butte riverside − slope,"ARMA(2,0)",-127.3,-120.4,0.615,False,0.426,True,False
+Δ Soda Butte riverside − slope,"ARMA(0,1)",-123.4,-118.2,0.001,True,0.078,True,False
+Δ Soda Butte riverside − slope,"ARMA(0,2)",-134.4,-127.4,0.97,False,0.671,True,False
+Δ Soda Butte riverside − slope,"ARMA(1,1)",-130.3,-123.4,0.967,False,0.246,True,False
+Δ Blacktail riverside − slope,"ARMA(0,0)",-156.5,-153.0,0.0,True,0.0,False,False
+Δ Blacktail riverside − slope,"ARMA(1,0)",-168.6,-163.4,0.0,True,0.419,True,False
+Δ Blacktail riverside − slope,"ARMA(2,0)",-167.6,-160.8,0.145,False,0.32,True,False
+Δ Blacktail riverside − slope,"ARMA(0,1)",-173.0,-167.9,0.0,True,0.42,True,True
+Δ Blacktail riverside − slope,"ARMA(0,2)",-171.0,-164.2,0.88,False,0.288,True,False
+Δ Blacktail riverside − slope,"ARMA(1,1)",-171.0,-164.2,0.757,False,0.263,True,False

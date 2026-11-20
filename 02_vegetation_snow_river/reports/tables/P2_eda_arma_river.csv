@@ -1,0 +1,25 @@
+series,model,AIC,BIC,largest term p,all terms significant,Ljung–Box p,white-noise residuals,chosen
+centre of timing,"ARMA(0,0)",844.0,849.5,0.0,True,0.635,True,True
+centre of timing,"ARMA(1,0)",846.0,854.3,0.998,False,0.541,True,False
+centre of timing,"ARMA(2,0)",847.6,858.6,0.988,False,0.613,True,False
+centre of timing,"ARMA(0,1)",846.0,854.3,0.999,False,0.54,True,False
+centre of timing,"ARMA(0,2)",847.6,858.6,0.902,False,0.59,True,False
+centre of timing,"ARMA(1,1)",848.0,859.1,1.0,False,0.44,True,False
+log annual mean flow,"ARMA(0,0)",-19.0,-13.5,0.0,True,0.472,True,True
+log annual mean flow,"ARMA(1,0)",-20.6,-12.3,0.067,False,0.881,True,False
+log annual mean flow,"ARMA(2,0)",-19.0,-8.0,0.576,False,0.851,True,False
+log annual mean flow,"ARMA(0,1)",-20.3,-12.0,0.088,False,0.848,True,False
+log annual mean flow,"ARMA(0,2)",-18.5,-7.5,0.675,False,0.801,True,False
+log annual mean flow,"ARMA(1,1)",-19.5,-8.4,0.3,False,0.892,True,False
+log 7-day summer low flow,"ARMA(0,0)",15.1,20.6,0.0,True,0.264,True,True
+log 7-day summer low flow,"ARMA(1,0)",16.0,24.3,0.365,False,0.43,True,False
+log 7-day summer low flow,"ARMA(2,0)",14.3,25.4,0.431,False,0.648,True,False
+log 7-day summer low flow,"ARMA(0,1)",16.3,24.6,0.489,False,0.368,True,False
+log 7-day summer low flow,"ARMA(0,2)",15.1,26.1,0.707,False,0.57,True,False
+log 7-day summer low flow,"ARMA(1,1)",13.8,24.8,0.002,True,0.696,True,False
+log annual peak flow,"ARMA(0,0)",61.7,67.2,0.0,True,0.991,True,True
+log annual peak flow,"ARMA(1,0)",63.6,71.9,0.823,False,0.982,True,False
+log annual peak flow,"ARMA(2,0)",65.4,76.4,0.827,False,0.971,True,False
+log annual peak flow,"ARMA(0,1)",63.6,71.9,0.835,False,0.982,True,False
+log annual peak flow,"ARMA(0,2)",65.4,76.4,0.862,False,0.971,True,False
+log annual peak flow,"ARMA(1,1)",65.4,76.4,0.639,False,0.968,True,False

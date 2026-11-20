@@ -1,0 +1,19 @@
+series,n,"ADF p (lag 0, 1, 2)",KPSS p (level),KPSS p (trend),verdict
+Lamar riverside,43,"0.000, 0.009, 0.143",0.056,0.1,stationary
+Δ Lamar riverside,42,"0.000, 0.000, 0.000",0.057,0.01,stationary
+Lamar slope,43,"0.000, 0.000, 0.007",0.1,0.1,stationary
+Δ Lamar slope,42,"0.000, 0.000, 0.000",0.1,0.01,stationary
+Lamar diff,43,"0.000, 0.023, 0.026",0.1,0.1,stationary
+Δ Lamar diff,42,"0.000, 0.000, 0.000",0.1,0.1,stationary
+Soda Butte riverside,43,"0.000, 0.013, 0.149",0.01,0.1,trend-stationary
+Δ Soda Butte riverside,42,"0.000, 0.000, 0.000",0.1,0.013,stationary
+Soda Butte slope,43,"0.000, 0.000, 0.000",0.1,0.1,stationary
+Δ Soda Butte slope,42,"0.000, 0.000, 0.000",0.1,0.01,stationary
+Soda Butte diff,43,"0.017, 0.009, 0.145",0.019,0.1,trend-stationary
+Δ Soda Butte diff,42,"0.000, 0.000, 0.000",0.1,0.01,stationary
+Blacktail riverside,42,"0.001, 0.009, 0.078",0.086,0.09,stationary
+Δ Blacktail riverside,41,"0.000, 0.000, 0.000",0.042,0.01,unclear (tests disagree)
+Blacktail slope,42,"0.000, 0.002, 0.006",0.1,0.1,stationary
+Δ Blacktail slope,41,"0.000, 0.000, 0.000",0.1,0.066,stationary
+Blacktail diff,42,"0.000, 0.224, 0.444",0.012,0.078,trend-stationary
+Δ Blacktail diff,41,"0.000, 0.000, 0.000",0.1,0.1,stationary
