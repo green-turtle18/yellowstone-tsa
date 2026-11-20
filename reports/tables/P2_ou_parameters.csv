@@ -1,0 +1,5 @@
+,OU
+phi (daily AR1),0.9784
+theta per day,0.0218
+half-life of an anomaly (days),31.7
+"sigma (OU, per sqrt day)",0.208

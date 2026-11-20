@@ -1,0 +1,7 @@
+model,outcome,predictor,coef,CI low,CI high,p,R2,n
+CT_dowy ~ Melt_out_anom_days,CT_dowy,Melt_out_anom_days,0.673,0.537,0.808,0.0,0.78,45
+"CT_dowy ~ Melt_out_anom_days + peak SWE (z, 3 stations)",CT_dowy,Melt_out_anom_days,0.697,0.546,0.848,0.0,0.78,45
+"CT_dowy ~ Melt_out_anom_days + peak SWE (z, 3 stations)",CT_dowy,"peak SWE (z, 3 stations)",-0.464,-1.891,0.962,0.5235,0.78,45
+"log_mean_Q ~ peak SWE (z, 3 stations)",log_mean_Q,"peak SWE (z, 3 stations)",0.207,0.176,0.239,0.0,0.68,45
+"log_low7 ~ peak SWE (z, 3 stations) + Melt_out_anom_days",log_low7,"peak SWE (z, 3 stations)",0.084,0.031,0.137,0.0019,0.56,45
+"log_low7 ~ peak SWE (z, 3 stations) + Melt_out_anom_days",log_low7,Melt_out_anom_days,0.012,0.008,0.016,0.0,0.56,45

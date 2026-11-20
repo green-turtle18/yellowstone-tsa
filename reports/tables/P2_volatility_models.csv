@@ -1,0 +1,4 @@
+model,log-lik,AIC,BIC,t dof,converged,persistence (alpha+beta),persistence (beta),asymmetry gamma
+constant variance (OU assumption),-53819.9,107643.9,107661.2,2.49,True,,,
+"GARCH(1,1)",-50639.4,101286.7,101321.3,3.4,True,1.0,,
+"EGARCH(1,1) with asymmetry",-50242.5,100494.9,100538.2,3.13,True,,0.847,0.071 (p = 5.6e-24)
