@@ -1,0 +1,4 @@
+,MAPE (%),correlation with actual (log)
+SARIMA,41.9,-0.21
+SARIMAX + 1 May snowpack,24.9,0.67
+climatology,43.7,-0.13

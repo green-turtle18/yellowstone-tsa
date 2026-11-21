@@ -1,6 +1,6 @@
 # Repository layout and reproduction
 
-The Yellowstone work lives in `01_yellowstone_elk_wolves/`. The comparison reads the unchanged Isle Royale dataset and shared model code in `04_isle_royale/`, and writes results to `05_synthesis/`.
+The Yellowstone work lives in `01_yellowstone_elk_wolves/`. The comparison reads the unchanged Isle Royale dataset and shared model code in `04_isle_royale/`, and writes results to `04_isle_royale/comparison/`.
 
 Run from a full repository checkout:
 

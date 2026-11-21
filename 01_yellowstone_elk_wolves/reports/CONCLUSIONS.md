@@ -40,7 +40,7 @@ The current annual series provides limited evidence that changes in wolf numbers
 
 ## Cross-system comparison — completed
 
-The [harmonised comparison](../../05_synthesis/report/COMPARISON.md) reruns both datasets with Person 4's shared specification and reproduces their original table. It also compares the same 1984–2015 window. This uses lagged wolf levels with prey density, whereas the original Yellowstone analysis above uses lagged changes in wolf numbers.
+The [harmonised comparison](../../04_isle_royale/comparison/report/COMPARISON.md) reruns both datasets with Person 4's shared specification and reproduces their original table. It also compares the same 1984–2015 window. This uses lagged wolf levels with prey density, whereas the original Yellowstone analysis above uses lagged changes in wolf numbers.
 
 Over 1984–2015, the density-adjusted wolf coefficient is -1.02 log-growth percentage points per ten wolves in Yellowstone (95% CI -3.00 to 0.96; p=0.312) and -23.66 in Isle Royale (95% CI -38.61 to -8.71; p=0.002). VAR(1) wolf-to-prey p-values are 0.530 and 0.009, respectively.
 

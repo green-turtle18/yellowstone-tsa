@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 os.environ.setdefault('MPL_IGNORE_SYSTEM_FONTS','1')
 os.environ.setdefault('MPLCONFIGDIR','/tmp/yellowstone-mpl')
 commands=[['scripts/build_master_dataset.py'],['scripts/analysis.py'],['scripts/summarize_results.py'],
-          ['scripts/prepare_notebooks.py'],['scripts/run_notebooks.py'],['supplements/gap_research/build_supplement.py'],['-m','unittest','discover','-s','tests','-v'],['scripts/validate_outputs.py'],['../05_synthesis/scripts/build_comparison.py'],['-m','unittest','discover','-s','../05_synthesis/tests','-v'],['presentation/build_slides.py'],['scripts/validate_presentation.py'],['scripts/refresh_handoffs.py']]
+          ['scripts/prepare_notebooks.py'],['scripts/run_notebooks.py'],['supplements/gap_research/build_supplement.py'],['-m','unittest','discover','-s','tests','-v'],['scripts/validate_outputs.py'],['../04_isle_royale/comparison/scripts/build_comparison.py'],['-m','unittest','discover','-s','../04_isle_royale/comparison/tests','-v'],['scripts/refresh_handoffs.py']]
 for args in commands:
     print('Running:', ' '.join(args),flush=True)
     subprocess.run([sys.executable,*args],cwd=ROOT,check=True)

@@ -1,0 +1,10 @@
+predictor,outcome,coef,p,n,lowest Ljung–Box p (lag 5)
+May forecast: SARIMAX + snowpack,Streamside,0.0152,0.012,120,0.043
+May forecast: SARIMAX + snowpack,Hillside,0.0201,0.017,120,0.085
+May forecast: SARIMAX + snowpack,Gap (streamside − hillside),-0.0019,0.505,120,0.002
+May forecast: SARIMA only,Streamside,-0.0072,0.351,120,0.07
+May forecast: SARIMA only,Hillside,-0.0158,0.105,120,0.084
+May forecast: SARIMA only,Gap (streamside − hillside),0.0084,0.048,120,0.001
+actual July–Sep flow (hindsight),Streamside,0.0301,0.0,120,0.023
+actual July–Sep flow (hindsight),Hillside,0.0396,0.0,120,0.02
+actual July–Sep flow (hindsight),Gap (streamside − hillside),-0.0085,0.044,120,0.019

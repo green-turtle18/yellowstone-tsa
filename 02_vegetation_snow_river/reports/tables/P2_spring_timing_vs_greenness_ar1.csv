@@ -1,0 +1,7 @@
+side,stream,n,CT effect,p,AR(1) φ,Ljung–Box p lag 5,lag 10,ARCH p
+Streamside,Lamar,42,0.006,0.535,0.24,0.974,0.94,0.42
+Streamside,Soda Butte,42,0.0171,0.031,0.03,0.993,0.941,0.617
+Streamside,Blacktail,41,0.0205,0.044,0.36,0.793,0.882,0.708
+Hillside,Lamar,42,0.0274,0.007,0.18,0.19,0.438,0.266
+Hillside,Soda Butte,42,0.0282,0.021,0.14,0.054,0.173,0.067
+Hillside,Blacktail,41,0.0258,0.033,0.39,0.792,0.681,0.272

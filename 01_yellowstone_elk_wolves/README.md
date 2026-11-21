@@ -7,7 +7,7 @@ This project asks whether wolves, hunting, winter severity, bison and climate ca
 - [Results and before/after comparison](reports/RESULTS.md)
 - [Completion checklist, ready-to-send requests and handoffs](reports/HANDOFF.md)
 - [Audited value/source changes](reports/tables/data_corrections.csv)
-- [Completed Yellowstone–Isle Royale comparison](../05_synthesis/report/COMPARISON.md)
+- [Completed Yellowstone–Isle Royale comparison](../04_isle_royale/comparison/report/COMPARISON.md)
 - [References and source decisions](reports/REFERENCES.md)
 
 ## Reproduce
@@ -18,7 +18,7 @@ From the `01_yellowstone_elk_wolves/` directory, with Python and `requirements.t
 python3 scripts/run_all.py
 ```
 
-This rebuilds the canonical flagged dataset, runs all analyses, generates the results summary, creates notebooks 03–05, executes notebooks 01–05, refreshes the candidate-data sensitivity outputs, runs numerical checks, regenerates the validation record, reruns the shared Isle Royale comparison and its checks, rebuilds the presentation, and refreshes the handoff archives. The full repository checkout (including Parts 04 and 05) is required for these comparison stages. Failures stop the run. It uses a lightweight plain-Python notebook runner, so no Jupyter server is required. The runner captures printed output, final expressions and open Matplotlib figures; these notebooks do not use magics or shell cells. Jupyter can also open and execute them normally.
+This rebuilds the canonical flagged dataset, runs all analyses, generates the results summary, creates notebooks 03–05, executes notebooks 01–05, refreshes the candidate-data sensitivity outputs, runs numerical checks, regenerates the validation record, reruns the shared Isle Royale comparison and its checks, and refreshes the handoff archives. The full repository checkout (including Part 04) is required for these comparison stages. Failures stop the run. It uses a lightweight plain-Python notebook runner, so no Jupyter server is required. The runner captures printed output, final expressions and open Matplotlib figures; these notebooks do not use magics or shell cells. Jupyter can also open and execute them normally.
 
 To run stages individually:
 

@@ -61,5 +61,5 @@ Colab already has numpy, pandas, scipy, statsmodels and matplotlib. Notebook 09'
 
 - [ ] **Kill rates:** the annual reports show yearly kill rates only as a figure. Fill `data/raw/isle_royale_kill_rates_TO_FILL.csv`
       (moose per wolf per month), rerun the build script, and notebook 09 section 1 runs the direct prey- vs ratio-dependent test.
-- [x] **Comparison table:** completed in [Part 05](../05_synthesis/report/COMPARISON.md), using the unchanged shared specification. Yellowstone column: `../05_synthesis/reports/tables/YS_comparison_column.csv`. Includes matched-period and observed-input sensitivity checks.
+- [x] **Comparison table:** completed in [`comparison/`](../04_isle_royale/comparison/report/COMPARISON.md), using the unchanged shared specification. Yellowstone column: `../04_isle_royale/comparison/reports/tables/YS_comparison_column.csv`. Includes matched-period and observed-input sensitivity checks.
 - [ ] Confirm the references in the brief (year and journal) before citing.

@@ -57,6 +57,6 @@ The legacy shared-specification column rescales by the SD of all wolf levels in 
 
 ## Reproduce and provenance
 
-Run `python 05_synthesis/scripts/build_comparison.py` from the repository root. The script preserves both source datasets and Person 4's code and outputs. It writes the Yellowstone handoff column, reproduced Isle Royale column, matched-window tables, diagnostics, forecasts, figures and input hashes. The supplied Isle Royale table is checked against the regenerated native-window column.
+Run `python 04_isle_royale/comparison/scripts/build_comparison.py` from the repository root. The script preserves both source datasets and Person 4's code and outputs. It writes the Yellowstone handoff column, reproduced Isle Royale column, matched-window tables, diagnostics, forecasts, figures and input hashes. The supplied Isle Royale table is checked against the regenerated native-window column.
 
 Sources: `01_yellowstone_elk_wolves/data/processed/yellowstone_master_ts_flagged.csv`; `04_isle_royale/data/processed/isle_royale_annual.csv`; `04_isle_royale/docs/model_settings.md`; `04_isle_royale/scripts/tsa_spec.py`; `04_isle_royale/reports/tables/IR_comparison_column.csv`.

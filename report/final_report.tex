@@ -31,9 +31,9 @@
 BITS Pilani, K K Birla Goa Campus\\[10pt]
 \begin{tabular}{ll}
 Ashwath Chandramouli & 2024ADPS0853G \\
+Leora Modi & 2023B4AD0866G \\
 Nitin Sureshkumar & 2024ADPS0881G \\
-Tanishk Milind Tasgaonkar & 2024ADPS0874G \\
-Leora Modi & 2023B4AD0866G
+Tanishk Milind Tasgaonkar & 2024ADPS0874G
 \end{tabular}}
 \date{}
 
@@ -41,7 +41,7 @@ Leora Modi & 2023B4AD0866G
 \maketitle
 
 \begin{abstract}
-\noindent Gray wolves were reintroduced to Yellowstone National Park in 1995--96. The classic account holds that they set off a top-down trophic cascade: fewer elk, less browsing and recovering streamside willows. Critics argue that hunting, drought, winter severity, bison and stream hydrology explain much of the same change. We test the links of this chain with time-series methods, in four parts. Part~1 models annual growth of the northern Yellowstone elk count (1984--2025); Part~2 studies streamside vegetation from Landsat NDVI (1984--2026), snowpack, and 116 years of daily river flow; Part~3 models 564 months of park visitation (1979--2025); Part~4 applies the same methods to wolves and moose on Isle Royale (1959--2015), a system with no hunting, bison or migration. In Yellowstone, lagged wolf changes do not significantly predict elk growth (wolf-only coefficient $-0.031$ per ten wolves, $p=0.12$; VAR Granger $p=0.18$). On Isle Royale, under one shared specification, wolves clearly predict and limit moose (common-window coefficient $-23.7$ log-growth percentage points per ten wolves, $p=0.002$; Granger $p=0.009$). Streamside vegetation greened relative to nearby slopes only on Blacktail Deer Creek ($+0.026$ NDVI per decade since 1996, $p<0.001$); on the braided Lamar and Soda Butte channels, floods dominate. Year-to-year increases in elk go with a browner riverside in the same summer ($p=0.006$), but no driver Granger-causes vegetation. The river's spring pulse now arrives about 13 days earlier than in 1950 and summer low flow is falling. Park-wide visitation did not rise with wolves; it follows climate and policy. Every multivariate model was tested for Granger causality and every fitted model's residuals were checked for white noise. The evidence is consistent with parts of the cascade but cannot establish it from annual time series alone.
+\noindent Gray wolves were reintroduced to Yellowstone National Park in 1995--96. The classic account holds that they set off a top-down trophic cascade: fewer elk, less browsing and recovering streamside willows. Critics argue that hunting, drought, winter severity, bison and stream hydrology explain much of the same change. We test the links of this chain with time-series methods, in four parts. Part~1 models annual growth of the northern Yellowstone elk count (1984--2025); Part~2 studies streamside vegetation from Landsat NDVI (1984--2026), snowpack, and 116 years of daily river flow; Part~3 models 564 months of park visitation (1979--2025); Part~4 applies the same methods to wolves and moose on Isle Royale (1959--2015), a system with no hunting, bison or migration. In Yellowstone, lagged wolf changes do not significantly predict elk growth (wolf-only coefficient $-0.031$ per ten wolves, $p=0.12$; VAR Granger $p=0.18$). On Isle Royale, under one shared specification, wolves clearly predict and limit moose (common-window coefficient $-23.7$ log-growth percentage points per ten wolves, $p=0.002$; Granger $p=0.009$). Streamside vegetation greened relative to nearby slopes only on Blacktail Deer Creek ($+0.026$ NDVI per decade since 1996, $p<0.001$); on the braided Lamar and Soda Butte channels, floods dominate. Annual elk counts show no browning signal: in years when elk increase, both streamside and hillside are greener. Water drives greenness on both sides, and no driver Granger-causes vegetation. The river's spring pulse now arrives about 13 days earlier than in 1950; against a SARIMA forecast fitted on 1911--1979, April--May flow since 2000 is about 30\% higher and July--September flow 20--26\% lower, and an earlier spring goes with less green summers. Adding the 1 May snowpack to the SARIMA (SARIMAX) cuts the error of May forecasts of late-summer flow from 42\% to 25\%, and these forecasts anticipate summer greenness. Park-wide visitation did not rise with wolves; it follows climate and policy. Every multivariate model was tested for Granger causality and every fitted model's residuals were checked for white noise. The evidence is consistent with parts of the cascade but cannot establish it from annual time series alone.
 \end{abstract}
 
 \tableofcontents
@@ -52,18 +52,18 @@ Leora Modi & 2023B4AD0866G
 %=====================================================================
 
 \subsection{The debate}
-Wolves were absent from Yellowstone for about 70 years before 31 wolves were released in 1995--96. In the years that followed, the northern elk herd fell from about 17{,}000 to under 5{,}000 counted animals, and some streamside stands of willow and aspen grew taller. \citet{ripple2012} interpreted this as a \emph{trophic cascade}: wolves reduced elk numbers and changed where elk browse, which released riparian vegetation.
+Wolves were absent from Yellowstone for about 70 years before 31 wolves were released in 1995--96. In the years that followed, the northern elk herd fell from about 17{,}000 to under 5{,}000 counted animals, and some streamside stands of willow and aspen grew taller. \citet{ripple2004} proposed, and \citet{ripple2012} later reviewed, a \emph{trophic cascade}: wolves reduced elk numbers and changed where elk browse, which released riparian vegetation, with taller willows reported on Blacktail Deer Creek \citep{beschta2007}.
 
-The cascade has been challenged on several fronts. Elk were also hunted heavily outside the park in the late 1990s, drought and hard winters reduced calf survival, and a growing bison herd competes for forage \citep{macnulty2016,eberhardt2007}. In some streams incised channels and low water tables prevent willow regrowth regardless of browsing \citep{marshall2013,hobbs2024}.
+The cascade has been challenged on several fronts. Elk were also hunted heavily outside the park in the late 1990s, drought and hard winters reduced calf survival, and a growing bison herd competes for forage \citep{macnulty2016,eberhardt2007}. In some streams incised channels and low water tables prevent willow regrowth regardless of browsing \citep{bilyeu2008,marshall2013,hobbs2024}.
 
 \subsection{Research questions}
 The project splits the cascade into links that can each be examined with time-series data.
 \begin{enumerate}[label=\textbf{RQ\arabic*.}]
 \item Do changes in wolf numbers help explain and predict growth of the northern Yellowstone elk count, beyond climate, hunting, bison and the herd's own past? (Part~1)
-\item Did streamside vegetation become greener relative to nearby slopes after 1995, does it track elk or summer water more closely, and how have snowpack and river flow changed? (Part~2)
+\item Did streamside vegetation become greener relative to nearby slopes after 1995, does it track elk, bison, summer water or spring timing, how have snowpack and river flow changed, and can late-summer water be forecast in spring? (Part~2)
 \item Did wolves bring tourists, and is a warmer climate changing when people visit the park? (Part~3)
 \item In a simpler system with no hunting, bison or migration, do the same methods detect a wolf effect on prey? (Part~4)
-\item Under one shared model, how do Yellowstone and Isle Royale compare? (Synthesis)
+\item Under one shared model, how do Yellowstone and Isle Royale compare? (Part~4 comparison)
 \end{enumerate}
 
 \subsection{Scope}
@@ -152,7 +152,7 @@ where $W$ is the northern-range wolf count and $\mathbf{x}_t$ contains bison, ND
 \end{itemize}
 
 \subsection{Residual checks}
-All ARIMAX residuals pass Ljung--Box at lags 5 and 8 ($p=0.64$--$0.97$) and the ARCH test ($p\ge0.11$). For this report we also checked the VAR used for the Granger tests: its residuals pass the multivariate Portmanteau test (8 lags, $p=0.54$ for VAR(1), $0.85$ for VAR(2)), so the Granger $p$-values above are valid.
+All ARIMAX residuals pass Ljung--Box at lags 5 and 8 ($p=0.64$--$0.97$) and the ARCH test ($p\ge0.11$). For this report we also checked the VAR used for the Granger tests: its residuals pass the multivariate Portmanteau test (8 lags, $p=0.54$ for VAR(1), $0.85$ for VAR(2)), so the Granger $p$-values above are valid (\texttt{04\_isle\_royale/comparison/scripts/var\_residual\_checks.py}).
 
 \subsection{Answer to RQ1}
 The annual series gives limited evidence that wolf changes alone explain or predict elk growth. This does not show that wolves have no effect: the sample is short, survey methods changed, and wolves overlap in time with heavy hunting and drought.
@@ -161,7 +161,10 @@ The annual series gives limited evidence that wolf changes alone explain or pred
 \section{Part 2: Vegetation, snow and river}
 %=====================================================================
 \subsection{Design}
-The cascade claim is about streamside willows, so Part~2 measures greenness where the claim is made. For three northern-range streams, Landsat NDVI is extracted for a \emph{riverside} polygon and a nearby \emph{slope} polygon. The annual statistic is the median, over all July--August images, of the riverside$-$slope difference on the same image date. Weather, drought, haze and sensor changes affect both polygons alike and largely cancel; what remains is specific to the riverside. Climate Engine exports leave partial rows without placeholders, so only complete rows are used (599 of 1{,}003 and 590 of 692 image dates). The water side of the debate uses daily flow of the Yellowstone River since 1911 and three SNOTEL stations, summarised by water year (October--September).
+The cascade claim is about streamside willows, so Part~2 measures greenness where the claim is made. For three northern-range streams, Landsat NDVI is extracted for a \emph{riverside} polygon and a nearby \emph{slope} polygon. The annual statistic is the median, over all July--August images, of each polygon's NDVI and of the riverside$-$slope difference (the \emph{gap}) on the same image date. Weather, drought, haze and sensor changes affect both polygons alike and largely cancel in the gap; what remains is specific to the riverside. If wolves reduced browsing along streams, the riverside should gain on the slope after 1995 \citep{ripple2004,ripple2012}; if water tables limit willows, riverside greenness should follow water \citep{bilyeu2008,marshall2013}. Climate Engine exports leave partial rows without placeholders, so only complete rows are used (599 of 1{,}003 and 590 of 692 image dates). The water side uses daily flow of the Yellowstone River since 1911 and three SNOTEL stations, summarised by water year (October--September).
+
+\subsection{Exploratory analysis}
+Before any modelling, notebook~07 checks every series for completeness, distribution, trend, seasonality, stationarity and autocorrelation. The river record has no missing days in water years 1911--2026 (794 estimated and 169 provisional days are flagged); about 40\% of the Lamar/Soda Butte image dates are partial and dropped. ADF and KPSS agree that annual mean flow, summer low flow, the snow series and most vegetation gaps are stationary in levels; the centre of timing and the Soda Butte and Blacktail gaps are trend-stationary or ambiguous in levels and stationary after differencing, which is why trends are tested with Mann--Kendall and the regressions are run in first differences. Monthly log flow has a strong fixed seasonal cycle, and its seasonal difference is stationary. ARMA identification picks white noise for every annual river and snow series (each year is close to independent of the last), an MA(1) for the differenced Blacktail gap, and AR(2) for monthly temperature anomalies. In both levels and differences, the centre of timing is closely correlated with SNOTEL melt-out ($r=0.86$--$0.88$) and with summer low flow ($r=0.74$--$0.80$), and the vegetation gaps are weakly negatively correlated with water ($r$ from $-0.4$ to $0$).
 
 \subsection{Did the riverside green up after 1995?}
 \begin{figure}[H]
@@ -172,42 +175,67 @@ The cascade claim is about streamside willows, so Part~2 measures greenness wher
 
 The answer depends on the stream (Figure~\ref{fig:veg}).
 \begin{itemize}
-\item \textbf{Blacktail Deer Creek}, a narrow willow-lined creek and the one \citet{ripple2012} studied, greened relative to its slope after 1995: Sen's slope $+0.026$ NDVI per decade over 1996--2026 (Mann--Kendall $p<0.001$), with a break chosen by BIC in 2007 and no trend before 1995. The rise is already present within the Landsat 5/7 era (1996--2012, $p=0.02$), so it is not an artefact of the 2013 sensor change. It is gradual, not a step at 1995, as expected if willows slowly escape browsing.
-\item \textbf{Lamar River and Soda Butte Creek}, wide braided gravel channels, show no greening: both differences fall over 1984--2026 ($p=0.018$ and $0.009$). Soda Butte's break is at 1997, and both drop sharply that year, after the third and fourth largest river peaks in 116 years (1997 and 1996) and in the same way as after the record 2022 flood. The wolf release and two major floods occurred within two years of each other, a real confound for any before/after-1995 comparison.
+\item \textbf{Blacktail Deer Creek}, a narrow willow-lined creek where taller willows were reported after wolf reintroduction \citep{beschta2007}, greened relative to its slope after 1995: Sen's slope $+0.026$ NDVI per decade over 1996--2026 (Mann--Kendall $p<0.001$), with a break chosen by BIC in 2007 and no trend before 1995. The rise is already present within the Landsat 5/7 era (1996--2012, $p=0.02$), so it is not an artefact of the 2013 sensor change. It is gradual, not a step at 1995, as expected if willows slowly escape browsing.
+\item \textbf{Lamar River and Soda Butte Creek}, wide braided gravel channels, show no greening: their gaps fall by $0.014$ and $0.027$ NDVI per decade over 1984--2026 ($p=0.018$ and $0.009$ after the autocorrelation correction). Soda Butte's break is at 1997, and both drop sharply that year, after the third and fourth largest river peaks in 116 years (1997 and 1996) and in the same way as after the record 2022 flood. The wolf release and two major floods occurred within two years of each other, a real confound for any before/after-1995 comparison.
 \end{itemize}
 In the intervention regression $d_y=a+bt+c\,\mathrm{post}_{1995}+e\,(t-1995)\,\mathrm{post}_{1995}$, Lamar's step at 1995 is $-0.066$ with Newey--West errors ($p=0.03$) but not significant once the errors are modelled as AR(1) ($p=0.28$); Blacktail's post-1995 change in trend becomes significant with AR(1) errors ($+0.004$ per year, $p=0.04$). Pooled over the three streams there is no 1995 effect.
 
-\subsection{Water or elk?}
-\citet{marshall2013} argued that low water tables, not only browsing, hold willows back. The riverside difference was regressed on standardised summer 7-day low flow, log elk and log bison, pooled with a separate intercept per stream. Because elk and bison trend, the same model was fitted in first differences.
+\subsection{Water, elk or bison?}
+\citet{bilyeu2008} and \citet{marshall2013} argued that low water tables, not only browsing, hold willows back. Greenness was regressed on standardised summer 7-day low flow, log elk and log bison, pooled over the three streams. Because elk and bison trend, the model is fitted in first differences (this year minus last year), with errors clustered by year. To see \emph{which side} moves, the same model was fitted to the streamside, the hillside and the gap separately (Table~\ref{tab:fd}).
 
 \begin{table}[H]
 \centering\small
-\caption{Riverside$-$slope difference on year-to-year changes in drivers, three streams pooled ($n=122$). Coefficients per standard deviation; errors clustered by year.}\label{tab:fd}
+\caption{Year-to-year change in July--August NDVI on year-to-year changes in drivers, three streams pooled ($n=122$). Coefficients per standard deviation of the driver; $p$-values in brackets.}\label{tab:fd}
 \begin{tabular}{@{}lccc@{}}
 \toprule
-Change in & Coefficient & 95\% CI & $p$ \\
+Driver rises & Streamside & Hillside & Gap (streamside$-$hillside) \\
 \midrule
-Summer 7-day low flow & $-0.0097$ & $[-0.018,\,-0.002]$ & 0.020 \\
-Log elk count & $-0.0447$ & $[-0.077,\,-0.013]$ & 0.006 \\
-Log bison count & $+0.0035$ & $[-0.045,\,+0.052]$ & 0.888 \\
+Summer 7-day low flow & $+0.028$ ($<0.001$) & $+0.038$ ($<0.001$) & $-0.010$ (0.020) \\
+Log elk count & $+0.046$ (0.006) & $+0.104$ ($<0.001$) & $-0.045$ (0.006) \\
+Log bison count & $-0.049$ (0.002) & $-0.048$ (0.078) & $+0.004$ (0.888) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Years when elk increase go with a browner riverside relative to slope that summer, which is consistent with browsing (Table~\ref{tab:fd}). Wetter late summers go with a \emph{smaller} difference in every specification. The likely reason is the design: in wet summers the slopes green up strongly while the always-wet riverside changes less, so this metric cannot isolate water-table limitation.
+\begin{itemize}
+\item \textbf{Water.} Both sides are greener in wetter summers; the dry hillside gains more, so the gap narrows. Water matters for greenness everywhere, which is why the gap alone cannot isolate water-table limits on willows.
+\item \textbf{Elk.} The gap narrows when elk increase, but fitting each side shows that \emph{both} sides are greener in those years, the hillside by more. This is not a browsing signal: the likely explanation is that the same good years (mild winters, good growing seasons) help elk survive and plants grow, and annual counts cannot separate that from any browsing effect.
+\item \textbf{Bison.} In years when bison increase, both sides are a little browner (clearly on the streamside), so the gap does not move: a possible grazing effect, not tested further.
+\end{itemize}
 
-\paragraph{Granger causality.} Each series was first made stationary (Lamar's difference and low flow are stationary in levels by ADF and KPSS; Soda Butte, Blacktail, log elk and log bison are differenced). In pairwise tests at lags 1 and 2 for each stream, no driver Granger-causes the riverside difference: all 18 tests have $p\ge0.20$. A four-variable VAR(1) for each stream gives the same result ($p=0.20$--$0.89$), and the reverse-direction sanity checks are also null. The elk and water links are within the same year, not lagged.
+\subsection{Does an early spring leave the plants less green?}
+The river's centre of timing (CT, Section~\ref{sec:timing}) measures when the spring pulse arrives. It was tested on its own in the same first-difference model, with one unit equal to one standard deviation of CT (8.3 days over 1984--2025). It is not added to the water, elk and bison model because CT and summer low flow move together ($r=0.75$) and would compete for the same signal.
 
-\paragraph{Residual checks.} The VARs' residuals pass the Portmanteau test (8 lags, $p=0.48$--$0.76$). Single-stream regressions and the first-difference model pass Ljung--Box (lags 5 and 10) and ARCH; the Soda Butte intervention model failed Ljung--Box at lag~5 ($p=0.03$) and passes once refitted with AR(1) errors ($\phi=0.39$). Pooled models in levels leave stream-specific drift in their residuals for Blacktail and Soda Butte, which is why the first-difference and single-stream results are the ones reported.
+\begin{table}[H]
+\centering\small
+\caption{Effect of a one-SD later spring pulse on July--August NDVI. Top: first differences, three streams pooled ($n=122$). Bottom: each stream in levels with a linear trend and AR(1) errors.}\label{tab:ct}
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Model & Stream & Streamside & Hillside & Gap \\
+\midrule
+First differences & pooled & $+0.017$ (0.003) & $+0.027$ ($<0.001$) & $-0.009$ (0.013) \\
+\addlinespace
+Levels, AR(1) errors & Lamar & $+0.006$ (0.54) & $+0.027$ (0.007) & \\
+ & Soda Butte & $+0.017$ (0.031) & $+0.028$ (0.021) & \\
+ & Blacktail & $+0.021$ (0.044) & $+0.026$ (0.033) & \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Has snowmelt shifted?}
+A \emph{later} spring pulse goes with a \emph{greener} summer on both sides, the hillside more, so an \textbf{early spring leaves the plants less green} (Table~\ref{tab:ct}). The first-difference residuals have negative lag-1 autocorrelation for some streams, a sign of over-differencing, so each stream and side was refitted in levels with its own trend and AR(1) errors: those residuals are white noise (Ljung--Box $p\ge0.05$ at lags 5 and 10), and all six effects are positive, five of them significant. When CT is added to the low-flow, elk and bison model its effect disappears ($p\ge0.10$) while low flow keeps its effect: timing acts \emph{through} water, because an early melt leaves less water in late summer.
+
+\paragraph{Granger causality.} Each series was first made stationary (Lamar's gap and low flow are stationary in levels by ADF and KPSS; Soda Butte, Blacktail, log elk and log bison are differenced). In pairwise tests at lags 1 and 2 for each stream, no driver Granger-causes the riverside gap: all 18 tests have $p\ge0.20$. A four-variable VAR(1) for each stream gives the same result ($p=0.20$--$0.89$), and the reverse-direction sanity checks are also null. The links above are within the same year, not lagged.
+
+\paragraph{Residual checks.} The VARs' residuals pass the Portmanteau test (8 lags, $p=0.48$--$0.76$). Single-stream regressions and the first-difference water, elk and bison model pass Ljung--Box (lags 5 and 10) and ARCH; the Soda Butte intervention model failed Ljung--Box at lag~5 ($p=0.03$) and passes once refitted with AR(1) errors ($\phi=0.39$). Pooled models in levels leave stream-specific drift in their residuals for Blacktail and Soda Butte, which is why the first-difference and single-stream results are the ones reported.
+
+\subsection{Has snowmelt shifted?}\label{sec:timing}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{P2_03_timing_lowflow.png}
 \caption{Centre of timing of annual flow (left) and summer 7-day low flow (right), water years 1911--2026.}\label{fig:timing}
 \end{figure}
 
-The centre of timing (CT), the day by which half of a water year's flow has passed, has moved earlier by 0.8 days per decade since 1911 ($p=0.002$) and 1.8 days per decade since 1950 ($p=0.0001$ after the autocorrelation correction), about 13 days in total (Figure~\ref{fig:timing}). The annual peak has moved earlier at a similar rate ($-1.9$ days per decade since 1950, $p=0.002$) and the April--May share of annual flow is rising ($p<0.001$). Annual mean flow has no trend, but summer 7-day low flow has fallen by about 3\% per decade since 1950 ($p=0.026$): the water arrives earlier, and late summer is drier. Peak snow water equivalent at Northeast Entrance has fallen by 0.9 inches per decade since 1967 ($p=0.005$), while the three-station severity index shows no trend since 1982.
+The centre of timing, the day by which half of a water year's flow has passed \citep{stewart2005}, has moved earlier by 0.8 days per decade since 1911 ($p=0.002$) and 1.8 days per decade since 1950 ($p=0.0001$ after the autocorrelation correction), about 13 days in total (Figure~\ref{fig:timing}). The 1950 window is the start of the warming period reported by the Greater Yellowstone Climate Assessment \citep{hostetler2021}, which also reports peak streamflow about 8 days earlier since 1925, in line with the full-record peak-date trend here ($-0.8$ days per decade). Since 1950 the annual peak has moved earlier at $-1.9$ days per decade ($p=0.002$) and the April--May share of annual flow is rising ($p<0.001$). Annual mean flow has no trend, but summer 7-day low flow has fallen by about 3\% per decade since 1950 ($p=0.026$): the water arrives earlier, and late summer is drier. Peak snow water equivalent at Northeast Entrance has fallen by 0.9 inches per decade since 1967 ($p=0.005$), while the three-station severity index shows no trend since 1982.
 
 \subsection{Does snow set the river? A degree-day melt model}
 Later snow melt-out moves the river's centre of timing later by 0.67 days per day ($R^2=0.78$), and a larger snowpack raises annual flow (log mean flow $+0.21$ per SD of peak SWE, $R^2=0.68$). The residuals of these regressions pass Ljung--Box and ARCH.
@@ -226,8 +254,8 @@ For each year at Northeast Entrance, the model is started at that year's peak sn
 
 \paragraph{Granger causality.} VARs pairing snow (peak SWE, severity index, melt-out anomaly) with river features (mean flow, low flow, centre of timing), 1982--2025, test whether last winter's snow helps predict this year's river. It does not: snow$\rightarrow$river $p=0.19$--$0.64$, river$\rightarrow$snow $p=0.23$--$1.00$. The same-year link is very strong (instantaneous causality $p<0.001$ for every pair). Lag length was chosen by BIC and increased where the residuals were not white; the two low-flow systems needed a second lag, after which all Portmanteau tests pass ($p=0.14$--$0.49$). There is therefore no detectable year-to-year carry-over storage at this gauge.
 
-\subsection{Forecasting monthly flow}
-Log monthly flow (1{,}392 months) needs a seasonal difference to be stationary. Candidate SARIMA models were compared by BIC, but a model was only eligible if its residuals passed Ljung--Box at lags 12, 24 and 36.
+\subsection{A seasonal model of monthly flow}
+Log monthly flow (1{,}392 months) has a strong fixed seasonal cycle, removed by a seasonal difference. Candidate SARIMA models were compared by BIC, but a model was only eligible if its residuals passed Ljung--Box at lags 12, 24 and 36 (Table~\ref{tab:sarima}).
 
 \begin{table}[H]
 \centering\small
@@ -245,7 +273,7 @@ Model & BIC & LB $p$ (12) & LB $p$ (24) & LB $p$ (36) & White? \\
 \end{tabular}
 \end{table}
 
-The chosen model, (2,0,2)(0,1,1)$_{12}$, leaves no residual autocorrelation above 0.08 (Figure~\ref{fig:sarres}). The three models with slightly lower BIC fail, including the (1,0,0)(0,1,1)$_{12}$ model chosen in an earlier version of the analysis. The residuals are heteroscedastic (ARCH $p<0.001$) and heavy-tailed, because snowmelt months are far more variable than winter months. This does not bias point forecasts, but SARIMA's constant-width intervals are too narrow in spring. In rolling-origin tests over water years 2017--2026 (refit each September, forecast 12 months), SARIMA's mean absolute percentage error is 20.7\%, against 22.0\% for monthly climatology and 30.2\% for seasonal naive.
+The chosen model, (2,0,2)(0,1,1)$_{12}$, leaves no residual autocorrelation above 0.08 (Figure~\ref{fig:sarres}). The residuals are heteroscedastic (ARCH $p<0.001$) and heavy-tailed, because snowmelt months are far more variable than winter months; this does not bias point forecasts, but the constant-width intervals are too narrow in spring. In rolling-origin tests over water years 2017--2026 (refit each September, forecast 12 months), its mean absolute percentage error is 20.7\%, against 22.0\% for monthly climatology and 30.2\% for seasonal naive. On its own, a good fit answers no ecological question, so the model is used for two questions that matter for the vegetation.
 
 \begin{figure}[H]
 \centering
@@ -253,13 +281,70 @@ The chosen model, (2,0,2)(0,1,1)$_{12}$, leaves no residual autocorrelation abov
 \caption{Residuals of the chosen SARIMA: time plot, ACF and normal QQ plot.}\label{fig:sarres}
 \end{figure}
 
+\subsection{Has the river's seasonal pattern changed?}
+The Mann--Kendall tests above describe single annual numbers. A counterfactual forecast asks the same question month by month: fit the chosen SARIMA only on water years 1911--1979, forecast October 1979 to September 2026 as if nothing had changed, and compare each calendar month with what happened. The seasonal MA coefficient is close to $-1$ ($-0.94$), so the forecast settles on the 1911--1979 seasonal profile and its 90\% interval stays bounded rather than widening without limit. For each month and period the comparison reports the average percentage difference (from the mean log difference), a binomial test of how many years came out above the forecast (null 50\%), and the share of years outside the 90\% interval (null 10\%).
+
+\begin{table}[H]
+\centering\small
+\caption{Actual flow against the no-change forecast from the 1911--1979 fit, 2000--2026 (27 years). Binomial test of the number of years above the forecast.}\label{tab:cf}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Month & Actual vs forecast & Years above & Binomial $p$ & Outside 90\% interval \\
+\midrule
+October & $-12\%$ & 7/27 & 0.019 & 4\% \\
+March & $+3\%$ & 11/27 & 0.44 & 4\% \\
+April & $+32\%$ & 22/27 & 0.002 & 22\% \\
+May & $+32\%$ & 23/27 & $<0.001$ & 22\% \\
+June & $-14\%$ & 10/27 & 0.25 & 11\% \\
+July & $-26\%$ & 6/27 & 0.006 & 33\% \\
+August & $-23\%$ & 6/27 & 0.006 & 30\% \\
+September & $-20\%$ & 5/27 & 0.002 & 15\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{P2_14_sarima_counterfactual.png}
+\caption{Left: average seasonal profile, 2000--2026, against the no-change forecast from the 1911--1979 fit with its 90\% interval. Right: percentage departure by month, 1980--1999 and 2000--2026.}\label{fig:cf}
+\end{figure}
+
+Yes: the river's year has shifted towards spring (Table~\ref{tab:cf}, Figure~\ref{fig:cf}). Since 2000, April and May carry about 30\% more water than the pre-1980 river would have, and July--September 20--26\% less, in most years and well outside the share expected by chance. The shift had already begun in 1980--1999 (April $+30\%$, $p=0.012$; May $+26\%$, $p=0.041$) and has strengthened. A fit on 1911--1949 only gives the same direction (April--May $+22$ to $+25\%$, July--September $-10$ to $-13\%$ since 2000, the summer deficit smaller and no longer significant, because 1950--1979 was itself a late-melt period), so the result does not depend on where the fit ends. This is the late-summer water that streamside plants depend on.
+
+\subsection{Can late-summer water be forecast in May?}
+If late-summer water can be forecast at the end of April, so can part of the summer's greenness. A plain SARIMA cannot do this: end-of-April forecasts of mean July--September flow, issued for water years 1985--2026 from data up to each April, have a mean absolute percentage error of 41.9\% and a correlation of $-0.21$ with what happened, no better than monthly climatology (43.7\%). The reason is the shift above: a high April flow often signals an early melt and so a drier summer, which the model's history-based dynamics cannot tell apart from a wet year.
+
+The missing information is the snow still on the ground. A SARIMAX adds the 1 May snow water equivalent at Northeast Entrance (standardised over 1967--2026) as five month-specific regressors for May to September, fitted from water year 1967 when SNOTEL begins. Its ARMA order was chosen by the same rule as before: (1,0,2)(0,1,1)$_{12}$ has the lowest BIC ($-340.5$) and white residuals (Ljung--Box $p=0.25$, 0.34 and 0.08 at lags 12, 24 and 36). One SD more snowpack raises log flow by 0.13 in May, 0.31 in June, 0.37 in July, 0.25 in August and 0.12 in September (all $p<0.001$).
+
+\begin{table}[H]
+\centering\small
+\caption{End-of-April forecasts of mean July--September flow, water years 1985--2026 (42 forecasts, each refitted on data available at the time).}\label{tab:may}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Forecast & MAPE & Correlation with actual (log) \\
+\midrule
+Monthly climatology & 43.7\% & $-0.13$ \\
+SARIMA (river history only) & 41.9\% & $-0.21$ \\
+\textbf{SARIMAX + 1 May snowpack} & \textbf{24.9\%} & $\mathbf{+0.67}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{P2_15_summer_flow_forecasts.png}
+\caption{End-of-April forecasts of mean July--September flow against what happened, 1985--2026.}\label{fig:may}
+\end{figure}
+
+With the snowpack, the error falls from about 42\% to 25\% and the correlation rises to 0.67 (Table~\ref{tab:may}, Figure~\ref{fig:may}). Feeding these May forecasts into the first-difference greenness model, years forecast to have more late-summer water are greener on both sides: $+0.015$ NDVI per SD on the streamside ($p=0.012$) and $+0.020$ on the hillside ($p=0.017$), about half the effect of the actual July--September flow (which is only known afterwards; $+0.030$ and $+0.040$). The plain SARIMA forecast shows no such link ($p=0.35$ and 0.11). Some first-difference residuals keep year-to-year pattern for one stream (lowest Ljung--Box $p=0.04$), so the per-stream levels models with trend and AR(1) errors are the check: their residuals are white noise and the effect is positive in all six fits, but significant only on Lamar (streamside $p=0.007$, hillside $p=0.004$). A May forecast of summer greenness is therefore possible in a moderate, pooled sense, not stream by stream.
+
 \subsection{Volatility and the 2022 flood}
 Daily flow is converted to an anomaly $z_t$ by removing the smoothed day-of-year mean and standard deviation of log flow. As an Ornstein--Uhlenbeck process, $dz=-\theta z\,dt+\sigma\,dW$, the daily AR(1) coefficient is 0.978, so an anomaly has a half-life of 32 days. Daily shocks are 3.6 times larger in some seasons than others, so the AR residuals are scaled by their seasonal size before comparing constant-variance, GARCH(1,1) and EGARCH(1,1) models with Student-$t$ errors. EGARCH is best by BIC (100{,}538 against 107{,}661 for constant variance), with a significant asymmetry term ($\gamma=0.071$). Before any volatility model the squared shocks are autocorrelated (largest ACF 0.25); after GARCH or EGARCH this falls to 0.02, so the clustering is captured. Ljung--Box still rejects with 42{,}000 days, but at autocorrelations of 0.02 the residuals are white noise for practical purposes.
 
-On 13 June 2022 the river peaked at 47{,}200 cubic feet per second, 48\% above the previous record of 32{,}000 (1918) and 3.7 standard deviations above normal for the date. Its return period depends almost entirely on the assumed tail: a Gumbel fit to the 1911--2021 annual peaks gives about 2{,}100 years (90\% bootstrap interval 1{,}020--5{,}458), while a GEV fit estimates a bounded tail (shape 0.118, upper limit 51{,}968 cfs) and calls the event nearly impossible. The flood collapsed the riverside$-$slope difference by 5.9 SD on Lamar and 2.5 SD on Soda Butte relative to 2017--2021, recovering over 2023--2026.
+On 13 June 2022 the river peaked at 47{,}200 cubic feet per second, 48\% above the previous record of 32{,}000 (1918) and 3.7 standard deviations above normal for the date. Its return period depends almost entirely on the assumed tail: a Gumbel fit to the 1911--2021 annual peaks gives about 2{,}100 years (90\% bootstrap interval 1{,}020--5{,}458), while a GEV fit estimates a bounded tail (shape 0.118, upper limit 51{,}968 cfs) and calls the event nearly impossible. The flood collapsed the riverside$-$slope gap by 5.9 SD on Lamar and 2.5 SD on Soda Butte relative to 2017--2021, recovering over 2023--2026.
 
 \subsection{Answer to RQ2}
-Satellite evidence supports riparian recovery on the small willow-lined creek where the cascade was first reported, but not on the large braided rivers, where floods and channel form dominate. More elk go with a browner riverside in the same summer, but no driver has a lagged (Granger) effect. Snowmelt and the river now peak earlier and summer low flow is falling; each year's snow sets that year's river, with no carry-over. Caveats: 30\,m pixels mix willows with gravel, grass and water; there are only 11 pre-wolf years; the polygons are drawn on present-day imagery while channels move; and the gauge is a basin-wide water index, not the water table under these willows.
+Satellite evidence supports riparian recovery on the small willow-lined creek where taller willows were reported, but not on the large braided rivers, where floods and channel form dominate. Elk numbers show no browsing signal in the annual data: in years when elk increase both sides are greener, while bison increases go with a slightly browner streamside. Water is the strongest driver of greenness on both sides, and the river's year has shifted: snowmelt and the spring peak arrive about 13 days earlier than in 1950, April--May carry about 30\% more water than the pre-1980 river would and late summer 20--26\% less. An early spring leaves the plants less green, through less late-summer water. Each year's snow sets that year's river with no carry-over, and adding the 1 May snowpack to the seasonal model forecasts late-summer water well enough to anticipate part of the summer's greenness. Caveats: 30\,m pixels mix willows with gravel, grass and water; there are only 11 pre-wolf years; the polygons are drawn on present-day imagery while channels move; and the gauge is a basin-wide water index, not the water table under these willows.
 
 %=====================================================================
 \section{Part 3: Park visitation}
@@ -297,7 +382,7 @@ Wolves did not move park-wide visitor numbers. Policy, climate and a very regula
 \section{Part 4: Isle Royale wolves and moose}
 %=====================================================================
 \subsection{Why Isle Royale}
-Isle Royale (544\,km$^2$, Lake Superior) has had wolves and moose and almost nothing else since 1949: no hunting, no bison or elk, and almost no migration. If wolves matter for their prey, the signal should be clearest here (Figure~\ref{fig:ir}). Part~4 wrote the shared model settings as a code module (\texttt{tsa\_spec.py}, version 1.3), which the synthesis also runs on Yellowstone.
+Isle Royale (544\,km$^2$, Lake Superior) has had wolves and moose and almost nothing else since 1949: no hunting, no bison or elk, and almost no migration. If wolves matter for their prey, the signal should be clearest here (Figure~\ref{fig:ir}). Part~4 wrote the shared model settings as a code module (\texttt{tsa\_spec.py}, version 1.3), which the Yellowstone comparison (Section~\ref{sec:compare}) also runs.
 
 \begin{figure}[H]
 \centering
@@ -339,10 +424,10 @@ Simulating the prey-dependent model 10{,}000 times from 1990 (1{,}315 moose, 15 
 On Isle Royale wolves measurably slow moose growth and wolves follow moose with a delay of about 8 years. The 2012--2016 wolf collapse was a likely outcome for a population this small and isolated.
 
 %=====================================================================
-\section{Synthesis}
+\section{Comparison and synthesis}\label{sec:compare}
 %=====================================================================
 \subsection{Same model, two parks}
-To compare the systems fairly, both datasets were re-run with Part~4's unchanged specification: prey log growth on lagged wolf \emph{levels}, controlling for prey density, on the same 1984--2015 window and the same forecast years. This differs from Part~1's headline predictor (lagged \emph{changes} in wolves), so it supplements rather than replaces that analysis.
+This comparison is part of Part~4 (code in \texttt{04\_isle\_royale/comparison/}). To compare the systems fairly, both datasets were re-run with Part~4's unchanged specification: prey log growth on lagged wolf \emph{levels}, controlling for prey density, on the same 1984--2015 window and the same forecast years. This differs from Part~1's headline predictor (lagged \emph{changes} in wolves), so it supplements rather than replaces that analysis.
 
 \begin{table}[H]
 \centering\small
@@ -376,16 +461,21 @@ Under the same model, wolves carry clear predictive information about prey on Is
 \begin{table}[H]
 \centering\small
 \caption{Granger causality and white-noise checks, by part.}\label{tab:granger}
+\begin{threeparttable}
 \begin{tabularx}{\textwidth}{@{}l Y Y@{}}
 \toprule
 Part & Granger causality & Residuals white noise? \\
 \midrule
-1 Elk and wolves & Wolves$\rightarrow$elk $p=0.18$; elk$\rightarrow$wolves $p=0.80$ (VAR(1), 1997--2025) & ARIMAX: yes (Ljung--Box $p\ge0.64$, ARCH $p\ge0.11$). VAR: yes (Portmanteau $p=0.54$) \\
-2 Vegetation and water & No driver$\rightarrow$riverside greenness (all $p\ge0.20$); snow$\rightarrow$next year's river $p\ge0.19$; strong same-year link & Yes after fixes: SARIMA reselected, AR(1) errors for one stream, extra VAR lag for low flow; GARCH residuals white in practice \\
+1 Elk and wolves & Wolves$\rightarrow$elk $p=0.18$; elk$\rightarrow$wolves $p=0.80$ (VAR(1), 1997--2025) & ARIMAX: yes (Ljung--Box $p\ge0.64$, ARCH $p\ge0.11$). VAR: yes (Portmanteau $p=0.54$, lag 2: 0.85)\tnote{a} \\
+2 Vegetation and water & No driver$\rightarrow$riverside greenness (all $p\ge0.20$); snow$\rightarrow$next year's river $p\ge0.19$; strong same-year link & Yes after fixes: SARIMA and SARIMAX chosen only among white-residual orders, AR(1) errors for one stream and for the timing checks, extra VAR lag for low flow; GARCH residuals white in practice \\
 3 Visitation & Temperature$\rightarrow$visits $p=0.23$; strong same-month link & VAR(24): yes per series. SARIMA: yes at lags 12--36, heavy tails \\
-4 Isle Royale & Wolves$\rightarrow$moose $p=0.011$ (lags 1--4: 0.002--0.021); moose$\rightarrow$wolves $p=0.18$ & ARIMAX: yes ($p\ge0.96$). VAR: yes (Portmanteau $p=0.20$) \\
+4 Isle Royale & Wolves$\rightarrow$moose $p=0.011$ (lags 1--4: 0.002--0.021); moose$\rightarrow$wolves $p=0.18$ & ARIMAX: yes ($p\ge0.96$). VAR: yes (Portmanteau $p=0.20$, lags 2--4: 0.47--0.71)\tnote{a} \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}\footnotesize
+\item[a] Recomputed by \texttt{04\_isle\_royale/comparison/scripts/var\_residual\_checks.py}.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 Isle Royale is the only system in which wolves Granger-cause their prey (Table~\ref{tab:granger}). Elsewhere, the links that exist operate within the same period, not with a lag.
@@ -399,8 +489,9 @@ Isle Royale is the only system in which wolves Granger-cause their prey (Table~\
 Link & Evidence & Strength \\
 \midrule
 Wolves $\rightarrow$ prey numbers & Clear on Isle Royale ($p=0.002$--$0.047$; Granger $p=0.011$); uncertain in Yellowstone ($p=0.12$--$0.41$) & Mixed \\
-Elk $\rightarrow$ streamside vegetation & Same-year browning with more elk ($p=0.006$); greening only on Blacktail Creek; no lagged effect & Partial \\
-Snow and water $\rightarrow$ river & Melt-out sets river timing ($R^2=0.78$); pulse 13 days earlier since 1950; summer low flow falling & Strong \\
+Elk $\rightarrow$ streamside vegetation & Greening relative to slope only on Blacktail Creek; no browning signal (more elk go with greener streamside \emph{and} hillside); no lagged effect & Weak \\
+Snow and water $\rightarrow$ river & Melt-out sets river timing ($R^2=0.78$); pulse 13 days earlier since 1950; April--May $+30\%$ and July--September $-20$ to $-26\%$ against the 1911--1979 SARIMA & Strong \\
+Water and timing $\rightarrow$ vegetation & Wetter summers greener on both sides ($p<0.001$); earlier spring less green; May SARIMAX forecast anticipates greenness ($p=0.012$--$0.017$) & Moderate \\
 Floods $\rightarrow$ braided channels & 1996--97 and 2022 floods cut riverside greenness by up to 6 SD; confounded with 1995 & Strong \\
 Wolves $\rightarrow$ visitors & No park-wide winter rise (rules out $>+1.5\%$); North-gate cars track wolves (elasticity $\approx0.3$) & Weak \\
 \bottomrule
@@ -422,26 +513,31 @@ Wolves $\rightarrow$ visitors & No park-wide winter rise (rules out $>+1.5\%$); 
 %=====================================================================
 \section{Conclusion}
 %=====================================================================
-Wolves matter most clearly where the system is simple. On Isle Royale, the same models that find little in Yellowstone show wolves predicting and limiting moose, with wolves following moose about eight years later. In Yellowstone, wolf changes carry only an uncertain signal for elk growth. Streamside recovery appears on the small willow-lined creek where the cascade was first reported, and elk increases go with a browner riverside in the same summer, but on the large braided rivers floods, snow and water dominate. Snowmelt and the river now peak about two weeks earlier than in 1950 and summer low flow is falling, and visitors follow climate and policy rather than wolves. A trophic cascade is consistent with parts of this evidence, but it cannot be established from annual time series alone.
+Wolves matter most clearly where the system is simple. On Isle Royale, the same models that find little in Yellowstone show wolves predicting and limiting moose, with wolves following moose about eight years later. In Yellowstone, wolf changes carry only an uncertain signal for elk growth. Streamside recovery appears on the small willow-lined creek where taller willows were first reported, but annual elk counts show no browning signal, and on the large braided rivers floods, snow and water dominate. Snowmelt and the river now peak about two weeks earlier than in 1950; set against a seasonal model of the pre-1980 river, spring now carries about 30\% more water and late summer 20--26\% less, and early springs leave the plants less green. Because the 1 May snowpack forecasts late-summer water, part of a summer's greenness can be anticipated in May. Visitors follow climate and policy rather than wolves. A trophic cascade is consistent with parts of this evidence, but it cannot be established from annual time series alone.
 
 \newpage
 %=====================================================================
-\begin{thebibliography}{10}\small
+\begin{thebibliography}{99}\small
+\bibitem[Beschta and Ripple(2007)]{beschta2007} Beschta, R. L., \& Ripple, W. J. (2007). Increased willow heights along northern Yellowstone's Blacktail Deer Creek following wolf reintroduction. \emph{Western North American Naturalist}, 67(4), 613--617.
+\bibitem[Bilyeu et~al.(2008)]{bilyeu2008} Bilyeu, D. M., Cooper, D. J., \& Hobbs, N. T. (2008). Water tables constrain height recovery of willow on Yellowstone's northern range. \emph{Ecological Applications}, 18(1), 80--92.
 \bibitem[Box et~al.(2015)]{box2015} Box, G. E. P., Jenkins, G. M., Reinsel, G. C., \& Ljung, G. M. (2015). \emph{Time Series Analysis: Forecasting and Control} (5th ed.). Wiley.
 \bibitem[Eberhardt et~al.(2007)]{eberhardt2007} Eberhardt, L. L., White, P. J., Garrott, R. A., \& Houston, D. B. (2007). A seventy-year history of trends in Yellowstone's northern elk herd. \emph{Journal of Wildlife Management}, 71, 594--602.
 \bibitem[Engle(1982)]{engle1982} Engle, R. F. (1982). Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation. \emph{Econometrica}, 50(4), 987--1007.
 \bibitem[Granger(1969)]{granger1969} Granger, C. W. J. (1969). Investigating causal relations by econometric models and cross-spectral methods. \emph{Econometrica}, 37(3), 424--438.
 \bibitem[Hobbs et~al.(2024)]{hobbs2024} Hobbs, N. T., Johnston, D. B., Marshall, K. N., Wolf, E. C., \& Cooper, D. J. (2024). Does restoring apex predators to food webs restore ecosystems? Large carnivores in Yellowstone as a model system. \emph{Ecological Monographs}, 94, e1598.
 \bibitem[Hock(2003)]{hock2003} Hock, R. (2003). Temperature index melt modelling in mountain areas. \emph{Journal of Hydrology}, 282, 104--115.
+\bibitem[Hostetler et~al.(2021)]{hostetler2021} Hostetler, S., Whitlock, C., Shuman, B., Liefert, D., Drimal, C. W., \& Bischke, S. (2021). \emph{Greater Yellowstone Climate Assessment: Past, Present, and Future Climate Change in Greater Yellowstone Watersheds}. Montana State University, Institute on Ecosystems.
 \bibitem[Ljung and Box(1978)]{ljungbox1978} Ljung, G. M., \& Box, G. E. P. (1978). On a measure of lack of fit in time series models. \emph{Biometrika}, 65(2), 297--303.
 \bibitem[MacNulty et~al.(2016)]{macnulty2016} MacNulty, D. R., Stahler, D. R., Wyman, C. T., Ruprecht, J., \& Smith, D. W. (2016). The challenge of understanding northern Yellowstone elk dynamics after wolf reintroduction. \emph{Yellowstone Science}, 24(1).
 \bibitem[Marshall et~al.(2013)]{marshall2013} Marshall, K. N., Hobbs, N. T., \& Cooper, D. J. (2013). Stream hydrology limits recovery of riparian ecosystems after wolf reintroduction. \emph{Proceedings of the Royal Society B}, 280, 20122977.
+\bibitem[Ripple and Beschta(2004)]{ripple2004} Ripple, W. J., \& Beschta, R. L. (2004). Wolves and the ecology of fear: Can predation risk structure ecosystems? \emph{BioScience}, 54(8), 755--766.
 \bibitem[Ripple and Beschta(2012)]{ripple2012} Ripple, W. J., \& Beschta, R. L. (2012). Trophic cascades in Yellowstone: The first 15 years after wolf reintroduction. \emph{Biological Conservation}, 145(1), 205--213.
+\bibitem[Stewart et~al.(2005)]{stewart2005} Stewart, I. T., Cayan, D. R., \& Dettinger, M. D. (2005). Changes toward earlier streamflow timing across western North America. \emph{Journal of Climate}, 18, 1136--1155.
 \end{thebibliography}
 
 \appendix
 \section{Reproducibility}
-All code and data are in the project repository, one folder per part. Notebooks are numbered uniquely across the project and run in order within each folder.
+All code and data are in the project repository (\texttt{green-turtle18/yellowstone-tsa}), one folder per part; this report and its LaTeX source are at the top level. Notebooks are numbered uniquely across the project and run in the order listed within each folder.
 \begin{table}[H]
 \centering\small
 \begin{tabularx}{\textwidth}{@{}l l Y@{}}
@@ -449,10 +545,10 @@ All code and data are in the project repository, one folder per part. Notebooks 
 Folder & Notebooks & Contents \\
 \midrule
 \texttt{01\_yellowstone\_elk\_wolves} & 01--05 & Data audit, drivers, VAR and Granger, forecasts, breaks, removals, viability, state space; \texttt{scripts/run\_all.py} rebuilds everything \\
-\texttt{02\_vegetation\_snow\_river} & 12, then 11 & Snow and river (12), riverside vegetation (11), including Granger and residual checks \\
+\texttt{02\_vegetation\_snow\_river} & 07, 12, 11 & Exploratory analysis (07); snow and river, SARIMA counterfactual and May SARIMAX forecast (12); riverside vegetation, water, elk, bison and spring timing (11); Granger and residual checks throughout \\
 \texttt{03\_park\_visitation} & 13--14 & Base SARIMA and forecasting (13); interventions, climate, shocks, North gate (14) \\
 \texttt{04\_isle\_royale} & 08--10 & Time-series analysis (08), predator--prey ODEs (09), stochastic simulation (10); shared settings in \texttt{scripts/tsa\_spec.py} \\
-\texttt{05\_synthesis} & -- & \texttt{scripts/build\_comparison.py} re-runs both systems with the shared settings \\
+\texttt{04\_isle\_royale/comparison} & -- & \texttt{scripts/build\_comparison.py} re-runs both systems with the shared settings; \texttt{scripts/var\_residual\_checks.py} re-checks the Part~1 and Part~4 VAR residuals \\
 \bottomrule
 \end{tabularx}
 \end{table}

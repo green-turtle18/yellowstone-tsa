@@ -6,8 +6,8 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'05_synthesis'; TABLES=OUT/'reports/tables'
+ROOT=Path(__file__).resolve().parents[3]
+OUT=ROOT/'04_isle_royale/comparison'; TABLES=OUT/'reports/tables'
 sys.path.insert(0,str(ROOT/'04_isle_royale/scripts'))
 import tsa_spec as spec
 YS=ROOT/'01_yellowstone_elk_wolves'
@@ -188,7 +188,7 @@ The legacy shared-specification column rescales by the SD of all wolf levels in 
 
 ## Reproduce and provenance
 
-Run `python 05_synthesis/scripts/build_comparison.py` from the repository root. The script preserves both source datasets and Person 4's code and outputs. It writes the Yellowstone handoff column, reproduced Isle Royale column, matched-window tables, diagnostics, forecasts, figures and input hashes. The supplied Isle Royale table is checked against the regenerated native-window column.
+Run `python 04_isle_royale/comparison/scripts/build_comparison.py` from the repository root. The script preserves both source datasets and Person 4's code and outputs. It writes the Yellowstone handoff column, reproduced Isle Royale column, matched-window tables, diagnostics, forecasts, figures and input hashes. The supplied Isle Royale table is checked against the regenerated native-window column.
 
 Sources: `01_yellowstone_elk_wolves/data/processed/yellowstone_master_ts_flagged.csv`; `04_isle_royale/data/processed/isle_royale_annual.csv`; `04_isle_royale/docs/model_settings.md`; `04_isle_royale/scripts/tsa_spec.py`; `04_isle_royale/reports/tables/IR_comparison_column.csv`.
 '''

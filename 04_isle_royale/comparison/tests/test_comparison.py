@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,unittest
 import numpy as np
 import pandas as pd
-ROOT=Path(__file__).resolve().parents[2];T=ROOT/'05_synthesis/reports/tables'
+ROOT=Path(__file__).resolve().parents[3];T=ROOT/'04_isle_royale/comparison/reports/tables'
 
 class ComparisonTests(unittest.TestCase):
  def test_inputs_match_recorded_hashes(self):

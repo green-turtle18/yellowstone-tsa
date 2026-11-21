@@ -1,0 +1,7 @@
+side,stream,n,May-forecast effect,p,Ljung–Box p lag 5,lag 10
+Streamside,Lamar,42,0.0195,0.007,0.991,0.999
+Streamside,Soda Butte,42,0.0101,0.283,0.896,0.878
+Streamside,Blacktail,42,0.0136,0.223,0.716,0.864
+Hillside,Lamar,42,0.026,0.004,0.504,0.82
+Hillside,Soda Butte,42,0.0233,0.07,0.115,0.352
+Hillside,Blacktail,42,0.011,0.388,0.899,0.838

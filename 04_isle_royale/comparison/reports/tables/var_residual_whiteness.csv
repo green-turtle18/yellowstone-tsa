@@ -1,0 +1,7 @@
+system,VAR lag,years,n,Granger test,Granger p,residual lags tested,Portmanteau p,"Ljung–Box p, prey equation","Ljung–Box p, wolf equation"
+Yellowstone (Part 1),1,1997–2025,28,d_wolves → dlog_elk,0.176,8,0.535,0.867,0.187
+Yellowstone (Part 1),2,1997–2025,27,d_wolves → dlog_elk,0.136,8,0.852,0.816,0.886
+Isle Royale (Part 4),1,1960–2015,55,dlog_wolves → dlog_prey,0.011,10,0.202,0.986,0.824
+Isle Royale (Part 4),2,1960–2015,54,dlog_wolves → dlog_prey,0.021,10,0.468,0.959,0.98
+Isle Royale (Part 4),3,1960–2015,53,dlog_wolves → dlog_prey,0.002,10,0.705,0.994,0.995
+Isle Royale (Part 4),4,1960–2015,52,dlog_wolves → dlog_prey,0.004,10,0.67,0.905,0.988
